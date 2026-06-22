@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (18:06 UTC) — Nemotron 3.5 ASR Streaming (June 4, 2026) + Qwen3-ForcedAligner Arabic Timestamps + whu-iasp Weights NOT Released (Round 17)
+*Full report: [research/2026-06-22/daytime-1806.md](2026-06-22/daytime-1806.md)*
+
+### Insight 1 — NVIDIA Nemotron 3.5 ASR Streaming 0.6B (June 4, 2026): Newest Arabic Streaming ASR, Already in sherpa-onnx (PR #3671), ONNX INT4 Pre-Built — Benchmark on Quran Immediately
+`nvidia/nemotron-3.5-asr-streaming-0.6b` (June 4, 2026, OpenMDW-1.1 commercial-ok) is the **newest streaming Arabic ASR model** — released 3.5 months after Moonshine Arabic, not yet in any previous research round. Key specs: 600M params, cache-aware transducer, **80ms chunk size** (lowest latency of any tested model), 40 languages including Arabic via `prompt_index` tensor. **`onnx-community/nemotron-3.5-asr-streaming-0.6b-onnx-int4`** is already INT4 ONNX-converted (no export work needed). **`FluidInference/Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML`** is already CoreML-converted for iOS. sherpa-onnx PR #3671 (merged ~May 2026) added full support — use via the same Flutter `streaming_asr` example. **Critical gap:** No Quran WER published — only English FLEURS WER=7.91%. **Sakīna action (urgent):** Test ONNX INT4 version on 20 clips from `Buraaq/quran-audio-text-dataset` — if Arabic WER < 8%, this is the new primary on-device streaming model, replacing Moonshine Arabic.
+
+### Insight 2 — Qwen3-ForcedAligner-0.6B (Jan 29, 2026, Apache-2.0): Arabic Word/Character Timestamps Surpass ctc-forced-aligner — Upgrade TajweedAI Pipeline Now
+`Qwen/Qwen3-ForcedAligner-0.6B` (released Jan 29, 2026 with Qwen3-ASR, Apache-2.0) takes audio + transcript → returns **word-level and character-level timestamps** in Arabic (+ 10 other languages). Benchmarks show it **outperforms E2E forced-alignment models including `ctc-forced-aligner`** (the tool used in TajweedAI from Round 11). Quantized variant: `OpenVoiceOS/qwen3-forced-aligner-0.6b-q4-k-m`. The TajweedAI pipeline template is: `FastConformer ASR → ctc-forced-aligner → tajweed classifier` — upgrade step 2 to Qwen3-ForcedAligner for more accurate millisecond-level phoneme boundary timing (critical for Qalqalah echo detection, Madd duration, Ghunnah timing). Apache-2.0 license = no friction. Also confirmed: whu-iasp IQRA 2026 champion weights are **NOT public** on HuggingFace — only the frozen `facebook/wav2vec2-xls-r-300m` encoder is available; Sakīna must train its own TCN+CTC head using `Iqra-Eval/interspeech_IqraEval` pipeline code.
+
+---
+
 ## 2026-06-22 Daytime (16:06 UTC) — Harf-Speech Full Benchmark (Gemini 3 RTF=10.75 Eliminated) + Iqra-Eval GitHub Pipeline Code Found (Round 16)
 *Full report: [research/2026-06-22/daytime-1606.md](2026-06-22/daytime-1606.md)*
 
