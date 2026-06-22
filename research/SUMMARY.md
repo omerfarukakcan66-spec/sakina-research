@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Night (23:31 UTC) — Fanar 2.0 Aura-STT-LF + CATT-Whisper Diacritized ASR Win + Tarteel v5.85.1 Downgraded to Unverified (Round 21)
+*Full report: [research/2026-06-22/night-2331.md](2026-06-22/night-2331.md)*
+
+### Insight 1 — QCRI Fanar 2.0 (Mar 2026): Aura-STT-LF = First Arabic Long-Form ASR + Fanar-Sadiq = Islamic Multi-Agent Router Already in Production
+arXiv:2603.16397 (QCRI/HBKU, Qatar). `Aura-STT-LF` processes **hours-long Arabic audio** with speaker-change handling + `Aura-STT-LF-Styler` readability layer that **restores diacritics and punctuation** post-ASR. Companion `Aura-STT-BenchLF` is the first public Arabic long-form ASR benchmark (domain-diverse, paralinguistic event labels). `Fanar-Sadiq` is a live multi-agent Islamic query router dispatching to Fiqh reasoning, Quranic retrieval, du'a lookup, zakat/inheritance, Hijri calendar — a direct reference architecture for Sakīna's AI-to-teacher escalation routing. **Limitation:** Aura-STT-LF is MSA broadcast/meetings domain, NOT Quranic Classical Arabic — don't use it directly for recitation ASR. Use Aura-STT-LF-Styler architecture as the diacritization restoration layer design template, and Aura-STT-BenchLF for session-level evaluation. Models on HuggingFace `QCRI` org — check for Aura-STT-LF model card and license.
+
+### Insight 2 — KSAA-2026 Winner (OSACT7 @ LREC 2026, arXiv:2605.25928): CATT-Whisper Architecture Achieves Diacritized ASR at 23.26% WER — Outperforms Pure-Whisper for Tashkeel Output
+"Thaka" won the King Salman Global Academy 2026 Shared Task on Arabic Speech Dictation with Automatic Diacritization (Task 2) with **23.26% WER**. Architecture: **CATT text encoder** (character-aware Arabic morphology) + **frozen Whisper speech encoder** → character-level decoder with tashkeel output. Training: R-Drop regularization + Focal Loss + Monte Carlo Dropout inference (200 forward pass ensemble). **Why this matters for Sakīna:** This is the second proven architecture (alongside MaddoggProduction LoRA at 12.69% WER) for getting diacritized speech output — the CATT morphological branch is architecturally superior because it provides explicit diacritization context. Tajweed diff pipeline: `Speech → CATT-Whisper → tashkeel transcript → char-diff vs. expected Quran → flag wrong harakāt → tajweed rule`. **Sakīna action:** Search HuggingFace for CATT-Whisper/Thaka weights; benchmark on Quran clips vs. MaddoggProduction 12.69%.
+
+### Insight 3 — Tarteel v5.85.1 Downgraded: Mod-APK Source Only — Official Public Track Confirmed v5.77.3 Android (Jun 7) + iOS Stalled at v5.76.4
+Round 20 presented v5.85.1 and "8 minor versions in 2 weeks" as confirmed competitive escalation. **This round's audit: v5.85.1 appears only on mod-APK aggregator sites** (getmodpc.net, apktodo.io) which pull beta tracks or fabricate version numbers. Official sources (Google Play, Uptodown, soft112) show **v5.77.3 as the current Android release (June 7, 2026)**. iOS remains at v5.76.4 (Uptodown) — 4+ months behind Android. **Corrected competitive timeline:** Tarteel's Mahraj/Makharij beta (Q2 2026) and full release (Q4 2026) deadlines are unchanged, but the rapid-iteration signal from Round 20 should be treated as unverified. Sakīna's Q3 2026 ship target for phoneme feedback remains the correct racing deadline against Q4 Tarteel.
+
+---
+
 ## 2026-06-22 Night (22:32 UTC) — ICML 2026 Quran Paper (0.16% PER) + Quran-MD Word-Level Dataset + Tarteel v5.85.1 Sprint (Round 20)
 *Full report: [research/2026-06-22/night-2232.md](2026-06-22/night-2232.md)*
 
