@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (12:15 UTC) — IQRA 2026 Champion Architecture + Qwen3-ASR Quran Verdict + Meta OmniASR sherpa-onnx (Round 12)
+*Full report: [research/2026-06-22/daytime-1215.md](2026-06-22/daytime-1215.md)*
+
+### Insight 1 — IQRA 2026 Champion (whu-iasp, F1=0.7201): wav2vec2-XLS-R + TCN + CTC Is the Sakina Tajweed Assessment Template
+19 teams at IQRA 2026 (Interspeech, Sydney). Winner **whu-iasp**: frozen `wav2vec2-xls-r-300m` encoder + **Temporal Convolutional Network (TCN)** for phoneme-level context + CTC head, with two-stage curriculum training on the new `Iqra_Extra_IS26` corpus (first dataset of real human mispronounced MSA speech). F1 jumped from 0.30 (ArabicNLP 2025 best) to **0.7201** — a >2.4× improvement. The top 3 systems (whu-iasp, UTokyo, RAM) differ by < 0.005 F1, all using CTC-based approaches. **6th place: Kalimat (F1=0.6702)** used Qwen3-ASR 1.7B as a generative LALM — proves Qwen3-ASR works for phoneme assessment but is outclassed by lighter CTC systems. Sakina should use wav2vec2-xls-r-300m + TCN + CTC as the pronunciation assessment backbone, not Qwen3-ASR.
+
+### Insight 2 — Meta OmniASR 300M sherpa-onnx Pre-Converted (Nov 12, 2025): New Flutter Arabic ASR Path, Unbenched on Quran
+Meta released **Omnilingual ASR** (arXiv:2511.09690, Apache-2.0, Nov 10, 2025) — 1,600+ languages, CTC models at 300M/1B/7B params. Critical for Flutter: `csukuangfj/sherpa-onnx-omnilingual-asr-1600-languages-300M-ctc-2025-11-12` is a pre-built ONNX export already in the sherpa-onnx ecosystem — no conversion work needed, just set `language=arb_Arab`. The 300M CTC model achieves **8.92% phoneme error rate** on MSA Arabic (via Harf-Speech, arXiv:2604.06191). **Critical gap:** WER on specifically Quranic Classical Arabic is unpublished. Test this in the sherpa-onnx Flutter streaming example vs. `KheemP/whisper-base-quran-lora` (5.98% WER) immediately. If OmniASR hits < 8% on Quran it becomes the preferred on-device path: pre-converted, Apache-2.0, no Whisper ONNX export step.
+
+---
+
 ## 2026-06-22 Daytime (08:10 UTC) — arXiv:2507.13977 Deep Dive + TajweedAI + NeurIPS 2025 Full Sweep (Round 11)
 *Full report: [research/2026-06-22/daytime-0810.md](2026-06-22/daytime-0810.md)*
 
