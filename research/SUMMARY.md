@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Day (07:20 UTC) — Implementation Focus: Working Code TODAY
+*Full report: [research/2026-06-20/weekend-day-0720.md](2026-06-20/weekend-day-0720.md)*
+
+### Insight 1 — sherpa-onnx Has a Working Flutter Streaming ASR Example + Arabic Model (2026-04-01)
+`k2-fsa/sherpa-onnx` (13.1k ⭐, actively maintained) ships `flutter-examples/streaming_asr/` — a fully wired Flutter app that pipes mic → ONNX model → real-time tokens. The `sherpa-onnx-cohere-transcribe-14-lang-int8-2026-04-01` model released April 2026 explicitly includes **MENA: Arabic**. Drop this model into the existing example and you have on-device Arabic streaming ASR in Flutter today — zero API cost, works offline. Caveat: multilingual model, not Quran-fine-tuned.
+
+### Insight 2 — tarteel-ai/whisper-base-ar-quran Is Free via HuggingFace API Right Now
+POST audio bytes to `https://api-inference.huggingface.co/models/tarteel-ai/whisper-base-ar-quran` with a free HF token. Returns Arabic text with diacritics. WER 5.75% — best confirmed accuracy on Quranic Arabic. Free tier supports ~100–300 req/hr. Use this as the cloud fallback while sherpa-onnx runs on-device. For production scale: upgrade to HF Inference Endpoints (~$0.50/hr GPU, scale-to-zero).
+
+### Insight 3 — `quran-ai-transcriping` (Oct 2025, Python) Has Production-Quality Ayah Matching Logic Ready to Steal
+GitHub: `sayedmahmoud266/quran-ai-transcriping` (25 ⭐, last commit Oct 2025). FastAPI backend using tarteel-ai/whisper-base-ar-quran + constraint propagation algorithm that fuzzy-matches transcription against all 6,236 verses with tashkeel, fills backward gaps, continues forward consecutively. 100% verse detection accuracy claimed. Self-host on Fly.io free tier for dev. No streaming (roadmapped) — pair with sherpa-onnx for real-time, call this API for verse ID confirmation.
+
+### Insight 4 — `record` Flutter Package (v7.1.0, June 2026) Is the Microphone Layer to Use
+Published 9 days ago. 884 likes, 717k downloads, 160 pub points. Streams `Stream<Uint8List>` in PCM16 or AAC across all 6 platforms (Android, iOS, macOS, Linux, Windows, Web). This is the de facto standard for mic streaming in Flutter and is what sherpa-onnx streaming example already integrates with. Do not use `mic_stream` (15 months stale) or `mic_stream_recorder` (file output only, not byte stream).
+
+---
+
 ## 2026-06-20 Weekend Night (02:34 UTC)
 *Full report: [research/2026-06-20/weekend-night-0234.md](2026-06-20/weekend-night-0234.md)*
 
