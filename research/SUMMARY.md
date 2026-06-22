@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (14:01 UTC) — DeiT V3 Qira'at 99.6% + UniSpeech-BERT Multimodal Phoneme + IQRA 2026 Architecture Confirmed (Round 15)
+*Full report: [research/2026-06-22/daytime-1401.md](2026-06-22/daytime-1401.md)*
+
+### Insight 1 — DeiT V3 Qira'at Identification (Neural Computing and Applications, Mar 2026): 99.6% Accuracy on 10 Qiraat Styles — Supersedes Riwaya-ID 82%
+"Transformer-based and ensemble learning approaches for Qira'at identification" (Springer Neural Computing, DOI: 10.1007/s00521-025-11717-1, March 2026) achieves **99.6% accuracy / 99.5% F1** on identifying the 10 canonical Qiraat styles from audio, using MFCC spectrogram images fed into a **DeiT V3 vision transformer**. Dataset: ~1,400 audio samples. This supersedes the NeurIPS 2025 Riwaya-ID paper (82% binary Warsh/Hafs detection). **Concrete Sakīna action:** Add DeiT V3 as a 5ms preprocessing step — detect user's Qiraat → route to correct riwaya-specific ASR model. Covers Warsh users (North Africa/West Africa, ~10–15% of Muslims = ~200M people) that all competitors including Tarteel and Hifz AI miss entirely with their Hafs-only models. No public code found yet — contact Springer paper authors.
+
+### Insight 2 — arXiv:2511.17477 (Nov 2025): UniSpeech + BERT Multimodal Fusion — New Architecture for Quranic Phoneme Mispronunciation Detection
+"Enhancing Quranic Learning: A Multimodal Deep Learning Approach for Arabic Phoneme Recognition" (arXiv:2511.17477, Nov 21, 2025) introduces a **two-branch fusion architecture**: `microsoft/unispeech-sat-large` acoustic embeddings + Whisper transcription → BERT embeddings → combined classifier. Tested on 1015 audio samples (29 Arabic phonemes including 8 hafiz sounds, 11 native speakers). Result: multimodal fusion outperforms single-modality acoustic-only approaches. This is architecturally orthogonal to the IQRA 2026 winner (whu-iasp, acoustic-only CTC) — the text branch anchors *what should be pronounced*, the acoustic branch measures *what was pronounced*. Combine with `Buraaq/quran-audio-text-dataset` (77,429 word-level clips) + `Hetchy/quranic-phonemizer` for expected phoneme labels to train Sakīna's phoneme feedback layer.
+
+---
+
 ## 2026-06-22 Daytime (13:20 UTC) — Hifz AI App + Tarteel v5.78.0 Audio Fix + Quranly Live Teacher + Riwaya-ID (Round 14)
 *Full report: [research/2026-06-22/daytime-1320.md](2026-06-22/daytime-1320.md)*
 
