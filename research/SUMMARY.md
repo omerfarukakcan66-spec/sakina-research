@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Night (01:35 UTC)
+*Full report: [research/2026-06-20/weekend-night-0135.md](2026-06-20/weekend-night-0135.md)*
+
+### Insight 1 — CONFIRMED: Tarteel's Tajweed AI Is Roadmap, Not Shipped
+Tarteel's own Google Play app description explicitly states: "Currently, this feature does not include Tajweed or pronunciation correction, but we know there's community demand and it's on our roadmap." Their brand dominance is built on AI recitation feedback, yet the core tajweed correction feature remains unshipped. Quranlingo also lists AI tajweed correction as "upcoming." Sakina can be first to ship real tajweed correction in the consumer market — the window is open but 3–6 months wide.
+
+### Insight 2 — Time Magazine (May 26, 2026): "AI Tools Are Transforming Muslim Worship" — Mainstream Signal
+Time ran a feature on AI and Muslim worship featuring Tarteel being used at the Maryam Islamic Center in Houston during Ramadan's last ten nights. Hundreds of Muslims used it live for verse identification. This is the clearest signal yet that AI Quran tools are crossing into mainstream media coverage — the vertical is now investable and writable. Sakina's timing is aligned with the cycle.
+
+### Insight 3 — Saudi Govt Al-Maqraa (March 2025) Validates Hybrid Human+AI Model
+Saudi Arabia's Ministry-backed Al-Maqraa platform at the Grand Mosque uses AI recitation + teacher supervision in 10 languages (Arabic, English, Urdu, Indonesian, Malay, Hausa + others). It provides accredited certificates. Government-level validation of Sakina's core thesis — human-escalation over pure AI — is now in production at the world's most prestigious Islamic institution. Use this in pitch materials.
+
+### Insight 4 — 0.16% Phoneme Error Rate Achieved (Sep 2025 arXiv 2509.00094)
+A Deep Learning paper (850+ hours Quran audio, 300K annotated utterances, multi-level CTC model) achieved 0.16% average Phoneme Error Rate on Quranic recitation. This is the technical benchmark Sakina's ASR/tajweed pipeline should aim to match. The `KheemP/whisper-base-quran-lora` model (5.98% WER) is the fastest path to production; this paper's approach is the long-term ceiling to hit.
+
+---
+
 ## 2026-06-20 Weekend Night (00:36 UTC)
 *Full report: [research/2026-06-20/weekend-night-0036.md](2026-06-20/weekend-night-0036.md)*
 
