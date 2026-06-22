@@ -4,6 +4,26 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Day (09:04 UTC) — Implementation Focus: Working Code TODAY (Round 2)
+*Full report: [research/2026-06-20/weekend-day-0904.md](2026-06-20/weekend-day-0904.md)*
+
+### Insight 1 — offline-tarteel Is the Best Ready-to-Use Quran ASR Demo Running Today
+GitHub: `yazinsai/offline-tarteel` (221 ⭐). Identifies surah/ayah from recited audio fully offline. NVIDIA FastConformer quantized to ONNX (131 MB), sub-second latency, 95%+ recall. Live demo at https://offline-tarteel.whhite.com (FastAPI + React). Crucially: the ONNX model runs in React Native — **Flutter port via same ONNX model + sherpa-onnx is a direct path.** This is the verse-matching engine Sakīna needs.
+
+### Insight 2 — yayaiu6/Real-Time-Quran-recitation-tracker Shows Production Word-Alignment Architecture
+GitHub: `yayaiu6/Real-Time-Quran-recitation-tracker-System` (121 ⭐). Python/web, two ASR backends: (1) Groq Whisper API (cloud, 216× real-time), (2) NVIDIA NeMo Conformer-CTC local (60% faster than Whisper). Has word-level alignment + error detection + adaptive feedback. YouTube demo available. Mine its alignment logic for Sakīna's tajweed feedback layer.
+
+### Insight 3 — Tadabur: Best Dataset + Fine-Tuned Model for Training Custom Quran ASR
+GitHub: `fherran/tadabur` (161 ⭐). 1,400+ hours, 600+ reciters, word-level timestamps. `FaisaI/tadabur-Whisper-Small` on HuggingFace is ready for inference now. CC BY-NC 4.0. This is the training corpus if we need to fine-tune a model beyond Tarteel's whisper-base. Pair with `tarteel-ai/whisper-base-ar-quran` as baseline.
+
+### Insight 4 — Groq Whisper is the Optimal Cloud API: Free Tier + 216× Real-Time Speed
+2,000 req/day free, no credit card. Whisper Large v3 Turbo at $0.04/hr paid. Arabic is natively supported. Use as cloud fallback in Sakīna when on-device inference is too slow on low-end phones. Pair with on-device sherpa-onnx path for premium experience.
+
+### Insight 5 — CrisperWeaver (June 12 2026, Flutter) Shows How to Bundle 40+ ASR Families
+GitHub: `CrispStrobe/CrisperWeaver` (21 ⭐, last commit June 12, 2026). On-device Flutter app, Dart 88.9%, AGPL-3.0. Bundles Whisper, Qwen3-ASR, Gemma4-E2B. Architecture is a working reference for how to swap ASR models at runtime in Flutter — relevant for Sakīna's offline/cloud toggle.
+
+---
+
 ## 2026-06-20 Weekend Day (07:20 UTC) — Implementation Focus: Working Code TODAY
 *Full report: [research/2026-06-20/weekend-day-0720.md](2026-06-20/weekend-day-0720.md)*
 
