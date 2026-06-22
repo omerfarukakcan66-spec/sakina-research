@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Night (21:32 UTC) — Tarteel Mahraj Q4 2026 Hard Deadline + MIT quranic-universal-library + Cross-Qira'at Whisper Pooling (Round 19)
+*Full report: [research/2026-06-22/night-2132.md](2026-06-22/night-2132.md)*
+
+### Insight 1 — Tarteel Mahraj/Makharij Detection: Beta Q2 2026, Full Release Q4 2026 — 6-Month Competitive Window Is Sakīna's Hard Deadline
+Tarteel's own update page confirms Mahraj (articulation point) detection is in **beta testing Q2 2026** and scheduled for **full release Q4 2026** (Oct–Dec). This is the first public commitment to a phoneme-level feature from Tarteel. Every round of this research has confirmed Tarteel's tajweed correction is unshipped — now it has a deadline. **Sakīna must ship Makharij/phoneme feedback before Oct 2026 to claim the "first" positioning.** Current pipeline (whu-iasp wav2vec2-xls-r + TCN + CTC, Round 12) is the architecture; `Iqra-Eval/interspeech_IqraEval` code (Round 16) is the implementation template. Treat Q3 2026 as the ship date.
+
+### Insight 2 — TarteelAI/quranic-universal-library (MIT, 893 ⭐, Updated Jun 15 2026): Replace AGPL Data Dependency Free of Charge
+`TarteelAI/quranic-universal-library` (Ruby, MIT license, updated June 15, 2026 — 7 days ago) is Tarteel's most actively maintained public repo and contains a comprehensive collection of Quran data resources. **MIT license = no AGPL friction.** In Round 5, Rounds 4–18 repeatedly flagged Tarteel's AGPL restrictions as blocking Sakīna's data pipeline. This library is the MIT-licensed alternative from the same organization. Audit immediately for: verse text, metadata, audio indexes, tajweed annotations. If it covers what `TarteelAI/quranic-universal-library` (AGPL) covers, swap the dependency.
+
+### Insight 3 — arXiv:2506.02627 (Jun 2025): Cross-Dialect Whisper Pooling = One Model for All 10 Qira'at Styles
+"Overcoming Data Scarcity in Multi-Dialectal Arabic ASR via Whisper Fine-Tuning" (Jun 2025) shows that pooling low-resource dialect data with a shared phoneme inventory and fine-tuning Whisper outperforms mono-dialect training when per-dialect data is < 10h. The 10 canonical Qira'at (Hafs, Warsh, Qaloon, Shu'ba, etc.) are structurally identical to dialect variation — same phoneme inventory, rule-governed pronunciation differences. **Strategy:** pool Tadabur (1,400h) + EveryAyah (390h Hafs) + QURAN-MD (32 reciters) → one Whisper fine-tune with qira'at-label conditioning → DeiT V3 (99.6% Qira'at ID, Round 15) routes the user to the correct output head. Covers the ~200M Warsh/non-Hafs users that every competitor including Tarteel ignores.
+
+---
+
 ## 2026-06-22 Daytime (20:05 UTC) — sherpa-onnx v1.13.3 Nemotron Flutter CONFIRMED LIVE + EfficientNet-B0 Tajweed Vision + hetchyy Letter-Timestamps (Round 18)
 *Full report: [research/2026-06-22/daytime-2005.md](2026-06-22/daytime-2005.md)*
 
