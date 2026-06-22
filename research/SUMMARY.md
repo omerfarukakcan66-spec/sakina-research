@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-21 Weekend Day (15:03 UTC) — Implementation Focus: Working Code TODAY (Round 9)
+*Full report: [research/2026-06-21/weekend-day-1503.md](2026-06-21/weekend-day-1503.md)*
+
+### Insight 1 — CrisperWeaver (Jun 12, 2026, 21 ⭐): First Flutter Offline ASR App With Confirmed Arabic + Active 2026 Dev
+`CrispStrobe/CrisperWeaver` (AGPL-3.0, Flutter 3.44) is a fully-offline Flutter ASR app supporting 40+ ASR families including FunASR (31 languages, Arabic included) and Arabic TTS ("Lahgtna"). Last commit June 12, 2026 v0.7.9 — actively maintained and the only Flutter ASR reference app found with confirmed Arabic support updated in 2026. **AGPL-3.0 blocks code reuse in a proprietary product** — study the architecture (`lib/` structure, CrispASR engine wiring) without copying code. The CrispASR C++ backend supports on-device Arabic inference via ggml, which is the Flutter offline Arabic path to prototype next.
+
+### Insight 2 — Tadabur Dataset (fherran/tadabur, 162 ⭐, Apr 2026): 1,400h + 600 Reciters — Biggest Public Quran ASR Corpus
+`fherran/tadabur` provides 1,400+ hours of Quranic audio from 600+ distinct reciters with word-level timestamp alignment (JSON metadata). CC BY-NC 4.0 for research. Dataset on HuggingFace at `FaisaI/tadabur`. Includes `Tadabur-Whisper-Small` — Whisper-Small fine-tuned specifically on Tadabur data, domain-adapted for tajwīd, prolonged phonemes, and recitation style diversity. **No WER benchmark published yet but training data is 3–4× larger than any prior Quran ASR corpus.** Evaluate `Tadabur-Whisper-Small` vs. `tarteel-ai/whisper-base-ar-quran` (5.75% WER) on a held-out recitation set before choosing the Sakīna on-device model.
+
+### Insight 3 — MaddoggProduction Whisper-Turbo-Quran-LoRA: Diacritized Output = Tajweed Diff at Character Level
+`MaddoggProduction/whisper-l-v3-turbo-quran-lora-dataset-mix` fine-tunes Whisper Large v3 Turbo (4-layer decoder) on 3 Quran datasets with curriculum learning + augmentation. WER 12.69% — higher than KheemP (5.98%) but it outputs **fully diacritized Arabic (tashkeel)**. This makes it uniquely useful for Tajweed feedback: diff expected diacritized text vs. recognized diacritized text at the character level → pinpoint exactly which vowel/sukun/shadda was mispronounced. No other public Quran ASR model outputs tashkeel by default. Use alongside KheemP (better WER) for verse identification + MaddoggProduction for diacritized character-level feedback.
+
+### Insight 4 — `record` v7.1.0 + Groq Free Tier = Still the Fastest Path to Working Demo (Re-Confirmed Round 9)
+Confirmed again from new sources: `record` v7.1.0 (pub.dev, June 10, 2026, 717k downloads, BSD-3-Clause) is the sole viable Flutter mic streaming package in 2026. Groq free tier (2,000 req/day, 7,200 audio-sec/hr, `language=ar`, OpenAI-compatible) remains the zero-cost cloud ASR backbone. These two components alone are sufficient for a working Sakīna prototype today. New addition this round: `Voicegain` offers **15,000 free minutes** on signup — more credits than Groq for a single burst testing session.
+
+---
+
 ## 2026-06-21 Weekend Day (12:05 UTC) — Implementation Focus: Working Code TODAY (Round 8)
 *Full report: [research/2026-06-21/weekend-day-1205.md](2026-06-21/weekend-day-1205.md)*
 
