@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-21 Weekend Day (12:05 UTC) — Implementation Focus: Working Code TODAY (Round 8)
+*Full report: [research/2026-06-21/weekend-day-1205.md](2026-06-21/weekend-day-1205.md)*
+
+### Insight 1 — flutter_sound 9.30.0 Has `record_to_stream` for PCM16 → ASR Pipeline (75k Downloads/wk)
+`flutter_sound` v9.30.0 (6 months ago, 1,640 likes, 75k weekly downloads, MPL-2.0) is the highest-usage Flutter audio package with `record_to_stream` that pipes PCM Float32 or PCM Int16 directly to a Dart `StreamController<Food>`. Call `startRecorder(toStream: sink, codec: Codec.pcm16, numChannels: 1, sampleRate: 16000)` and every mic buffer arrives as bytes — pipe to Groq API or sherpa-onnx. However, **`record` v7.1.0 (from Round 7) is still the better choice** for simple `startStream()` API. Use flutter_sound only if you need simultaneous record+playback or Web support.
+
+### Insight 2 — KheemP/whisper-base-quran-lora Achieves 5.98% WER — Best Public Quran ASR Model
+LoRA fine-tune of Whisper-base specifically on Quranic recitation with diacritic sensitivity. Test WER ≈ 5.98%. Available on HuggingFace Hub with Inference API access. This is the smallest (fastest/cheapest) model achieving sub-6% WER on Quran text — ideal for the Groq free tier pipeline or self-hosted inference. Pair with `Buraaq/quran-audio-text-dataset` (264,509 MP3s, 30 reciters, NeurIPS 2025) for further fine-tuning with diverse tajweed styles.
+
+### Insight 3 — sherpa-onnx v1.13.3 (June 2026, 13.1k ⭐) Still Has No Arabic Streaming Model — Use Offline Whisper Path
+sherpa-onnx `streaming_asr` Flutter example is rock-solid and updated (latest release June 18, 2026), but Arabic streaming models do NOT exist in its model zoo. Whisper in sherpa-onnx is **offline/batch only** (non-streaming). The practical workaround for Sakīna: buffer ~5–10 seconds of mic audio via `record` → pass to `SherpaOnnxOfflineRecognizer` with `whisper-large-v3` ONNX weights → display result. Fully on-device, no network. Use `export-onnx.py` from previous Round 6 to convert `tarteel-ai/whisper-base-ar-quran` to ONNX for the best Quran accuracy.
+
+### Insight 4 — Groq Free Tier Confirmed: 2,000 req/day + 7,200 audio-sec/hr for Arabic Whisper
+Re-confirmed from multiple 2026 sources: Groq free tier gives 2,000 audio transcription requests/day and 7,200 audio-seconds/hour — no credit card. Whisper Large v3 Turbo: $0.04/hr (paid). Whisper Large v3: $0.111/hr (paid). Both support `language=ar`. OpenAI-compatible endpoint: `POST https://api.groq.com/openai/v1/audio/transcriptions`. For Sakīna development and early beta, this is the zero-cost cloud ASR backbone. Groq runs Whisper at 164–228× real-time speed.
+
+---
+
 ## 2026-06-21 Weekend Day (09:04 UTC) — Implementation Focus: Working Code TODAY (Round 7)
 *Full report: [research/2026-06-21/weekend-day-0904.md](2026-06-21/weekend-day-0904.md)*
 
