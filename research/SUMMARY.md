@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Night (22:34 UTC) — Tarteel Sentiment + New Arabic AI Startups
+*Full report: [research/2026-06-20/weekend-night-2234.md](2026-06-20/weekend-night-2234.md)*
+
+### Insight 1 — CNTXT AI Acquires Actualize (June 4, 2026): Arabic Voice Agent Stack Is Consolidating
+CNTXT AI (UAE) acquired Actualize, adding dialect-aware Arabic **voice agents** (bookings, transactions, tasks via Arabic voice) to its Munsit ASR platform. Arabic voice is evolving from transcription → full AI agents. GCC conversational AI market projected $400M (2025) → $2.5B by 2034. Still B2B/government only, no Quran vertical, no consumer UX — Sakīna's window intact but the infrastructure is rapidly maturing around it. Watch 12-18 month horizon.
+
+### Insight 2 — Tarteel's Notification System Is Broken — Friday/Nightly Reminders Silently Fail
+Users confirm Friday Surah Al-Kahf reminders and nightly Surah Al-Mulk notifications are not firing in 2026. For a memorization app, a broken habit loop = churn. The Feb 2026 UI update also regressed single-tap navigation to two-tap (reading/listening mode switch, bookmarks). These are active user pain points Sakīna must treat as Day 1 quality bars: notifications that actually fire + no UI regression post-update.
+
+### Insight 3 — Qwen3-ASR 1.7B (Jan 29, 2026): SOTA Open-Source ASR, Arabic WER on Quran Unpublished
+Alibaba released Qwen3-ASR 1.7B on January 29, 2026 — outperforms Whisper-large-v3, GPT-4o, Gemini-2.5 on standard ASR benchmarks. Supports 52 languages including Arabic. Live HuggingFace Space: `Qwen/Qwen3-ASR`. Now on Azure AI Foundry. **Critical gap:** no published WER on Quranic Arabic. Sakīna should benchmark Qwen3-ASR against `KheemP/whisper-base-quran-lora` (5.98% WER) on a Quranic test set — this is a publishable result that establishes technical credibility while finding a potentially superior model.
+
+### Insight 4 — Verse-to-Verse Audio Gap Is a Tarteel Architecture Bug, Not UX
+Tarteel serves each ayah as a separate audio clip, causing noticeable pauses between verses even when a sheikh recites them in a single breath. This is an audio architecture failure (clip-per-verse vs. streaming audio). Sakīna using HLS or WebRTC streaming reciter audio avoids this entirely — advantage comes for free from choosing the right architecture, not from extra engineering.
+
+---
+
 ## 2026-06-20 Weekend Day (18:06 UTC) — Implementation Focus: Working Code TODAY (Round 5)
 *Full report: [research/2026-06-20/weekend-day-1806.md](2026-06-20/weekend-day-1806.md)*
 
