@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-21 Weekend Day (06:03 UTC) — Implementation Focus: Working Code TODAY (Round 6)
+*Full report: [research/2026-06-21/weekend-day-0603.md](2026-06-21/weekend-day-0603.md)*
+
+### Insight 1 — FunASR v1.3.11 (June 20, 2026) Provides a Self-Hosted OpenAI-Compatible Endpoint
+`modelscope/FunASR` (18,400 ⭐, MIT, v1.3.11 released literally yesterday) now ships an OpenAI-compatible REST endpoint via `funasr-server --device cuda → localhost:8000`. `docker run modelscope/funasr:latest` spins it up in minutes. Flutter calls `http://your-vps:8000/v1/audio/transcriptions` — same code as Groq prototype, just a different base URL. Self-hosted on a $5/mo VPS for a low-volume prototype. **Arabic WER on Quranic text is unverified** — benchmark before trusting for verse matching. Also has WebSocket streaming at `runtime/python/websocket/` for real-time token flow.
+
+### Insight 2 — sherpa-onnx's export-onnx.py Script Converts Tarteel Fine-Tune to ONNX
+`sherpa-onnx/scripts/whisper/export-onnx.py` takes any HuggingFace Whisper variant and exports it to ONNX. Running `python export-onnx.py --model tarteel-ai/whisper-base-ar-quran` converts Tarteel's 5.75% WER Quran model into a file that drops directly into the `flutter-examples/streaming_asr` assets folder. **This closes the last gap in the offline pipeline**: best Quran accuracy + fully on-device + no cloud cost. The Moonshine Arabic model (5.63% WER) remains the faster real-time option; the Tarteel ONNX export is the accuracy-focused batch/VAD-chunked option.
+
+### Insight 3 — Word-by-Word Quran ASR Model Exists: 7.9% WER, Callable via HF Inference API
+`HamzaSidhu786/wav2vec2-base-word-by-word-quran-asr` achieves 7.9% WER with word-level granularity — it outputs one word at a time, not full ayahs. Input: 16kHz WAV. This is the closest public implementation of Sakīna's word-level tajweed feedback differentiator ("you mispronounced كَلِمَة at position 3") vs. Tarteel's ayah-level feedback. No live HuggingFace Space, but callable via HF Inference API free tier. Combine with `Hetchy/quranic-phonemizer` (NeurIPS 2025, from Round 5) to map mispronounced word → expected phonemes → specific tajweed rule violated.
+
+### Insight 4 — mic_stream Stable Release Is 15 Months Old — Use `record` v7.1.0 Only
+`mic_stream` 0.7.2 was published March 2025 (15 months ago). A `0.7.3-dev` prerelease exists but no stable update. `sound_stream` last updated September 2025. **Only `record` v7.1.0 (June 2026, 717k downloads, 160 pub points) is actively maintained in 2026.** This confirms previous runs: `record` is the sole safe choice for production Flutter mic streaming. The sherpa-onnx `streaming_asr` example already uses it as the audio layer.
+
+---
+
 ## 2026-06-20 Weekend Night (23:42 UTC) — Competitor Apps + Phoneme Layer + FastConformer Architecture
 *Full report: [research/2026-06-20/weekend-night-2342.md](2026-06-20/weekend-night-2342.md)*
 
