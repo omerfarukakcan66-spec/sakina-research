@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-21 Weekend Day (18:03 UTC) — Implementation Focus: Working Code TODAY (Round 10)
+*Full report: [research/2026-06-21/weekend-day-1803.md](2026-06-21/weekend-day-1803.md)*
+
+### Insight 1 — offline-tarteel v0.1.0 (Mar 1, 2026, 220 ⭐): Three-Phase Architecture Is the Blueprint for Sub-500ms Verse ID
+`yazinsai/offline-tarteel` published its first release March 1, 2026 (248 total commits). The project's `RESEARCH-audio-to-verse.md` (dated Feb 24, 2026) specifies a production-grade three-phase hybrid pipeline: (1) **WavLink/HuBERT embeddings + FAISS** for <500ms identification — pre-compute embeddings for all 6,236 verses × multiple reciters = **6–128 MB on-device** with quantization; (2) **Moonshine v2 Arabic streaming ASR** with word-level timestamps for real-time position tracking; (3) **Full Whisper fallback** for low-confidence cases. Live browser demo at offline-tarteel.whhite.com achieves 89.3% recall with 300ms audio chunks. React Native uses ONNX Runtime Mobile — same ONNX weights work in Flutter via sherpa-onnx. This is the most complete public architecture spec for a Quran verse ID system found across 10 rounds of research.
+
+### Insight 2 — CrisperWeaver 10s/3s Sliding Window: Production Mic Streaming Pattern for Continuous Arabic ASR
+`CrispStrobe/CrisperWeaver` (21 ⭐, v0.7.9 June 12, 2026, Flutter 3.44, AGPL-3.0) uses a **10-second sliding window with 3-second step** for continuous mic transcription. This is the specific windowing pattern that solves continuous Arabic recitation without VAD silence detection requirements — each window overlaps the previous by 7 seconds, ensuring no phoneme is cut at a window boundary. The MIT-licensed `CrispStrobe/CrispASR` backend (327 ⭐, ggml, 26 backends, June 14, 2026) can be wrapped in Flutter via FFI without AGPL implications. Study, do not copy, the CrisperWeaver window/step parameters for Sakīna's streaming pipeline.
+
+### Insight 3 — Moonshine Arabic Base (8,500 ⭐, Apache-2.0): 5.63% WER + Real-Time Streaming, Best On-Device Option
+`moonshine-ai/moonshine` (8,500 ⭐) provides an Arabic Base model (58M params, 5.63% WER) with bounded-latency streaming architecture that emits partial tokens **while the user is still speaking** — architecturally superior to batch Whisper for live verse tracking. Pre-quantized ONNX variant `sherpa-onnx-moonshine-base-ar-quantized-2026-02-27` is already in the sherpa-onnx model zoo — drop into `flutter-examples/streaming_asr`, zero conversion work. Flutter not listed as a first-class target but Android/iOS native routes exist; sherpa-onnx ONNX path is the clean Flutter integration.
+
+### Insight 4 — Groq Exact Pricing Locked: $0.000667/min → 10,000 Verse Checks for $0.55 (Re-Confirmed Round 10)
+Groq Whisper Large v3 Turbo: **$0.04/hr = $0.000667/min**. At 5s per verse check: 10,000 checks = 13.9 audio-hours = **$0.55 total**. Free tier: 2,000 req/day + 7,200 audio-sec/hr, no credit card. Endpoint: `POST https://api.groq.com/openai/v1/audio/transcriptions`, `language=ar`, OpenAI-compatible. Running at 228× real-time — an hour of recitation audio processes in ~15 seconds. The cost floor for Sakīna's entire early beta is under $5. Switch `baseUrl` in the `openai` Dart package to point at Groq; zero other code changes needed.
+
+---
+
 ## 2026-06-21 Weekend Day (15:03 UTC) — Implementation Focus: Working Code TODAY (Round 9)
 *Full report: [research/2026-06-21/weekend-day-1503.md](2026-06-21/weekend-day-1503.md)*
 
