@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (16:06 UTC) — Harf-Speech Full Benchmark (Gemini 3 RTF=10.75 Eliminated) + Iqra-Eval GitHub Pipeline Code Found (Round 16)
+*Full report: [research/2026-06-22/daytime-1606.md](2026-06-22/daytime-1606.md)*
+
+### Insight 1 — Harf-Speech (arXiv:2604.06191, Mar 2026): Complete Phoneme Benchmark Leaderboard — Gemini-3-pro RTF=10.75 Disqualifies It from Any Real-Time Tajweed Path
+"Harf-Speech: A Clinically Aligned Framework for Arabic Phoneme-Level Speech Assessment" (arXiv:2604.06191, March 11, 2026) provides the first clinical-grade Arabic phoneme benchmark with SLP validation. Full leaderboard: **OmniASR-CTC-1B-v2 = 8.92% PER** (fine-tuned, best model), **Wav2Vec2 zero-shot = 13.58% PER**, **Gemini-3-pro-preview = 15.07% PER but RTF=10.75** — meaning Gemini takes 10.75 seconds per 1 second of audio, completely unusable for live tajweed feedback. Clinical validation on 40 SLP-scored utterances: Pearson=0.791, ICC=0.659. **Sakīna action:** Confirm OmniASR-CTC-1B-v2 as the phoneme assessment backbone (pre-built ONNX in sherpa-onnx zoo); eliminate Gemini 3 from all real-time candidate lists. The 1B variant needs server-side deployment; 300M CTC runs on-device via sherpa-onnx.
+
+### Insight 2 — GitHub Iqra-Eval/interspeech_IqraEval: Official Open-Source Pipeline for 68-Phoneme Quranic Benchmark — Previously Unknown Code Repo
+`github.com/Iqra-Eval/interspeech_IqraEval` (arXiv:2506.07722, presented Interspeech 2025 + ArabicNLP 2025) is the **official code repository** for the IqraEval benchmark: 68-phoneme inventory, QuranMB.v1 evaluation benchmark, audio-to-phoneme alignment scripts, and training pipeline code. Also confirmed: **Hafs2Vec** (ACL Anthology: 2025.arabicnlp-sharedtasks.62) is the second-ranked system, trained on EveryAyah/QUL (94h, 54k clips) + IqraEval training (79h, 74k clips) using a Tajweed-aware Quranic phonemizer aligned to the 68-phoneme set. The `huggingface.co/IqraEval` org holds official model weights. **Sakīna action:** Clone `Iqra-Eval/interspeech_IqraEval` immediately — the data processing scripts eliminate 2–3 months of phoneme pipeline development. Adopt the 68-phoneme inventory as the standard for Sakīna's tajweed classifier to ensure benchmark comparability with IQRA 2026.
+
+---
+
 ## 2026-06-22 Daytime (14:01 UTC) — DeiT V3 Qira'at 99.6% + UniSpeech-BERT Multimodal Phoneme + IQRA 2026 Architecture Confirmed (Round 15)
 *Full report: [research/2026-06-22/daytime-1401.md](2026-06-22/daytime-1401.md)*
 
