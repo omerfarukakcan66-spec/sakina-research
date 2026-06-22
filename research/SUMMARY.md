@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Night (23:42 UTC) — Competitor Apps + Phoneme Layer + FastConformer Architecture
+*Full report: [research/2026-06-20/weekend-night-2342.md](2026-06-20/weekend-night-2342.md)*
+
+### Insight 1 — Wartilho (Jun 17, 2026): 3-Model On-Device Architecture Proves the Full Tajweed Pipeline
+Android app by Mohamed Marzouk: three ONNX models on-device — Conformer CTC ASR + tajweed verifier + tajweed duration (madd timing). Metrics: **5.82% WER, 1.21% CER, 68% exact ayah match, 23ms inference**. This is the first public proof that a complete on-device ASR+tajweed pipeline (including madd duration analysis) is achievable in a mobile app without cloud. The tajweed_duration model for madd analysis is unique — no other open-source project has published this component. Sakīna should study `MrConnect/Wartilho` as the reference architecture for its Flutter on-device pipeline.
+
+### Insight 2 — Quranic-Phonemizer (NeurIPS 2025) Closes the "Which Tajweed Rule?" Gap
+`Hetchy/quranic-phonemizer` (23 ⭐, MIT, live demo at quranicphonemizer.com, NeurIPS 2025 Muslims in ML paper). Converts Quranic text to 69-71 IPA-based phonemes per word with tajweed rule annotations (Iqlab, Idgham, Ikhfaa, Qalqala, Tafkheem, Madd, Ghunnah). The missing piece in every Quran ASR system: ASR gives wrong output → Phonemizer gives expected phonemes → diff → map to specific tajweed rule violated → tell user "you missed Ikhfaa at word 3." No custom model needed — pure alignment + rule lookup. MIT licensed.
+
+### Insight 3 — FastConformer ONNX Is Now Available for On-Device Quran ASR (Jun 14, 2026)
+`moabdelmoez/fastconformer-quran-onnx` (Jun 14, 2026) converts a FastConformer Quran model to ONNX. Wartilho's 23ms on Conformer CTC beats whisper-base-ar-quran speed by ~10-20× at comparable accuracy. The streaming variant (`Muno459/fastconformer-quran-streaming`) from awesome-quran-ai is the architecture to benchmark against Moonshine Arabic and sherpa-onnx. If FastConformer streaming beats Moonshine on a Quranic test set, it becomes Sakīna's primary on-device inference path.
+
+### Insight 4 — Tarteel's AGPL Licensing Is Creating Community Friction (Active Jun 2026)
+TarteelAI/quranic-universal-library (AGPL-3.0, 890 ⭐, 124 open issues) has 3 active commercial licensing inquiries (issues #588, #589, #638 — Apr–Jun 2026) from iOS and open-source app developers who need to build on Tarteel's translation and glyph data commercially. Tarteel's restrictive AGPL is slowing the ecosystem. Sakīna releasing its fine-tuned model under MIT/Apache and using Tanzil + Tadabur (CC-BY-NC) data could pull community developers away from Tarteel's data dependency — a strategic positioning move that costs nothing.
+
+---
+
 ## 2026-06-20 Weekend Night (22:34 UTC) — Tarteel Sentiment + New Arabic AI Startups
 *Full report: [research/2026-06-20/weekend-night-2234.md](2026-06-20/weekend-night-2234.md)*
 
