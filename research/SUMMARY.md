@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Day (18:06 UTC) — Implementation Focus: Working Code TODAY (Round 5)
+*Full report: [research/2026-06-20/weekend-day-1806.md](2026-06-20/weekend-day-1806.md)*
+
+### Insight 1 — sherpa-onnx `streaming_asr` Flutter Example + Arabic Models = Copy-Paste Pipeline
+`k2-fsa/sherpa-onnx` (13,100 ⭐, last commit June 18, 2026) ships `flutter-examples/streaming_asr/` — a complete Flutter app: `record` mic → sherpa-onnx online recognizer → real-time tokens. Swap `online_model.dart` to `sherpa-onnx-moonshine-base-ar-quantized-2026-02-27` (5.63% WER) or `sherpa-onnx-cohere-transcribe-14-lang-int8-2026-04-01` for Arabic. **One file change from a working Arabic ASR Flutter app.** Add `sherpa_onnx` (pub.dev v1.13.3, June 2026) + `record` v7.1.0 (160 pub points, 717k downloads) — done.
+
+### Insight 2 — Tarteel HuggingFace Space Is a Live Quranic ASR Demo (No Code Needed)
+https://huggingface.co/spaces/tarteel-ai/demo-whisper-base-ar-quran is a live inference UI for `tarteel-ai/whisper-base-ar-quran` (5.75% WER, diacritics preserved). Test any Quran recitation audio right now — paste URL or upload file. This is the quality benchmark Sakīna must match or beat. Model is also callable via HF Inference API with a free token for prototype validation.
+
+### Insight 3 — Diacritics (Tashkeel) Preservation Is the Critical API Selection Filter
+Every major commercial API (Deepgram Nova-3, AssemblyAI, OpenAI Whisper, ElevenLabs Scribe v2) strips tashkeel from Arabic output. For Quranic verse matching, diacritics are required. **Only Tarteel's self-hosted models preserve them.** Deepgram Nova-3 ($200 free credits, Jan 2026 Arabic launch, 40% lower WER than competitors) is excellent for general Arabic but needs a diacritization post-processing layer for verse matching. AssemblyAI ($0.0025/min, $50 free) is cheapest for budget experiments. Groq (2,000 req/day free, no card) remains best zero-cost prototype.
+
+### Insight 4 — CrisperWeaver (June 12, 2026, Flutter) + CrispASR (327 ⭐) Show Runtime Model-Swap Architecture
+`CrispStrobe/CrisperWeaver` (AGPL-3.0, last commit June 12, 2026) is a working Flutter app bundling Qwen3-ASR and Gemma4-E2B for Arabic alongside 40+ other ASR families. Its model browser + download queue + offline inference architecture is the reference implementation for Sakīna's offline/cloud toggle and model selection UX. Backend is `CrispStrobe/CrispASR` (MIT, 327 ⭐, June 14, 2026 — ggml C++ runtime with 26 backends).
+
+---
+
 ## 2026-06-20 Weekend Day (15:04 UTC) — Implementation Focus: Working Code TODAY (Round 4)
 *Full report: [research/2026-06-20/weekend-day-1504.md](2026-06-20/weekend-day-1504.md)*
 
