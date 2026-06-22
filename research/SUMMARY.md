@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Day (15:04 UTC) — Implementation Focus: Working Code TODAY (Round 4)
+*Full report: [research/2026-06-20/weekend-day-1504.md](2026-06-20/weekend-day-1504.md)*
+
+### Insight 1 — sherpa-onnx + `record` Package = Complete Offline Flutter ASR Stack, Both Confirmed June 2026
+`k2-fsa/sherpa-onnx` (13,100 ⭐, latest release June 18 2026) provides on-device streaming ASR for Android/iOS/desktop via ONNX Runtime. `record` v7.1.0 (717k downloads, published ~June 10 2026) is the Flutter microphone layer — it outputs `Stream<Uint8List>` in PCM16 at 16kHz, which pipes directly into sherpa-onnx. **This is the complete offline stack**: `flutter pub add record sherpa_onnx`, copy `flutter-examples/streaming_asr` as starting point, drop in any Arabic ONNX model. Both packages actively maintained in 2026.
+
+### Insight 2 — Groq API Offers 2,000 Free Req/Day + 7,200 Audio Sec/Hour — Best Cloud Prototype Path
+Groq's Whisper Large v3 Turbo endpoint (`https://api.groq.com/openai/v1/audio/transcriptions`) supports Arabic (`language=ar`), is OpenAI-compatible, runs at 164× real-time on Groq's LPU hardware, and has a free tier of 2,000 requests/day and 7,200 audio-seconds/hour (no credit card). Use this to validate the Sakīna pipeline in hours — no model download, no ONNX setup. Groq's free tier = ~2,000 Quran verse checks/day at zero cost.
+
+### Insight 3 — Three Quran-Specific Whisper Fine-Tunes Are Ready on Hugging Face
+(a) `MaddoggProduction/whisper-l-v3-turbo-quran-lora-dataset-mix`: 12.69% WER, LoRA-fine-tuned on Whisper-v3-Turbo — best for low-latency live use. (b) `tarteel-ai/whisper-base-ar-quran`: WER ~5.75%, lightweight (74M params), live demo at HuggingFace Spaces `tarteel-ai/whisper-tiny-demo-quran`. (c) `Habib-HF/tarbiyah-ai-whisper-medium-merged`: merged two fine-tunes for broader coverage. All three export to ONNX for sherpa-onnx integration. `tarteel-ai/whisper-base-ar-quran` available via free HuggingFace Inference API for immediate cloud testing.
+
+### Insight 4 — `vosk-flutter` (75 ⭐) Skipped: No iOS Support, Stale Since 2024
+VOSK provides offline Arabic ASR (50MB model) with streaming API, but `alphacep/vosk-flutter` explicitly does NOT support iOS and shows no 2025-2026 commit activity. Eliminated from Sakīna consideration. The sherpa-onnx path covers the same offline streaming use case with full iOS support and active 2026 maintenance.
+
+---
+
 ## 2026-06-20 Weekend Day (12:08 UTC) — Implementation Focus: Working Code TODAY (Round 3)
 *Full report: [research/2026-06-20/weekend-day-1208.md](2026-06-20/weekend-day-1208.md)*
 
