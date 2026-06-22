@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-21 Weekend Day (09:04 UTC) — Implementation Focus: Working Code TODAY (Round 7)
+*Full report: [research/2026-06-21/weekend-day-0904.md](2026-06-21/weekend-day-0904.md)*
+
+### Insight 1 — Minimum Viable Pipeline Is ONE Day Away: `record` + `quran-ai-transcriping` + Groq
+The fastest working Sakina prototype requires only 3 components, all confirmed active in 2025-2026: (1) `record` v7.1.0 (pub.dev, 10 days ago) for Flutter mic streaming → PCM16 bytes, (2) `sayedmahmoud266/quran-ai-transcriping` (FastAPI, Oct 2025, 25 ⭐) which wraps `tarteel-ai/whisper-base-ar-quran` + RapidFuzz verse matching → returns exact Surah + Ayah + timestamp for any recitation, (3) Groq API free tier (2,000 req/day, no card) as cloud ASR. Clone the FastAPI repo, run locally, point Flutter HTTP client at `localhost:8000`. No GPU, no model conversion, no ONNX. **Working end-to-end verse detection in hours.**
+
+### Insight 2 — `record` v7.1.0 Is the Only Flutter Mic Package Worth Using in 2026
+Published ~June 11, 2026 (10 days ago). 884 likes, 160 pub points, 717k downloads. BSD-3-Clause license. `startStream()` returns `Stream<Uint8List>` in PCM16 — pipes directly into sherpa-onnx and into HTTP chunked uploads to Groq/local API. Cross-platform: Android, iOS, Windows, macOS, Linux, Web. `mic_stream` is 15 months stale AND GPL-3.0 (license risk for proprietary app). `yasinarik/mic_stream_recorder` (created June 10, 2025, 3 ⭐) is too new/untested. `record` wins on every axis.
+
+### Insight 3 — obadx/recitation-segmenter-v2 + obadx/muaalem-model-v3_2 = Segmentation + Pronunciation Error Stack
+`recitation-segmenter-v2` (HuggingFace) is Wav2Vec2Bert fine-tuned at 20ms frame resolution — splits continuous recitation at waqf pause points without needing Ayah boundaries. Trained on 850+ hours / 300K annotated utterances. `muaalem-model-v3_2` (also obadx) goes further: detects actual pronunciation errors in learners. Together these two models handle (a) where to split the audio stream and (b) whether the segment was recited correctly. The segmenter is the missing preprocessing layer before verse matching that quran-ai-transcriping does not yet include.
+
+### Insight 4 — Groq Free Tier Is the Production-Viable API Backbone: 2,000 req/day + 7,200 sec/hr Arabic Whisper
+Groq's Whisper Large v3 Turbo at `https://api.groq.com/openai/v1/audio/transcriptions` runs at 228× real-time speed, supports Arabic (`language=ar`), and has a free tier of 2,000 requests/day + 7,200 audio seconds/hour — no credit card. API is OpenAI-compatible: same `openai` Dart package, just change `baseUrl`. At 2,000 req/day free, that's enough for ~2,000 verse checks/day for development and early users. Paid tier is $0.04/hr — dramatically cheaper than OpenAI ($0.36/hr) and Speechmatics for the same Whisper model.
+
+---
+
 ## 2026-06-21 Weekend Day (06:03 UTC) — Implementation Focus: Working Code TODAY (Round 6)
 *Full report: [research/2026-06-21/weekend-day-0603.md](2026-06-21/weekend-day-0603.md)*
 
