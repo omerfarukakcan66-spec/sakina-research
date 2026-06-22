@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Night (02:34 UTC)
+*Full report: [research/2026-06-20/weekend-night-0234.md](2026-06-20/weekend-night-0234.md)*
+
+### Insight 1 — Tarteel's Partial-Ayah ASR Bug + Bismillah Misidentification Still Unresolved in 2026
+Confirmed via 2026 aggregated reviews: reciting from the middle or end of an ayah fails (only full-ayah or start-of-ayah works). Separately, any surah starting with Bismillah incorrectly snaps to Al-Fatiha and flags it as a mistake. These are known bugs Tarteel has not fixed. Sakina must solve partial-verse tracking from v1 — this is a concrete, fixable user pain point that is directly addressable with `obadx/recitation-segmenter-v2` + streaming ASR.
+
+### Insight 2 — Qwen3-ASR 1.7B Is Now Used for Quran Phoneme Tasks at IQRA 2026
+The Kalimat team at IQRA 2026 (Interspeech, Sydney) used Qwen3-ASR 1.7B to reframe MSA diacritization detection as direct speech-to-phoneme generation, treating 68 MSA phonemes as discrete special tokens. Qwen3-ASR is SOTA open-source across 52 languages. Sakina should benchmark Qwen3-ASR 1.7B against the current best (`KheemP/whisper-base-quran-lora` at 5.98% WER) — Qwen3 may surpass it on Quranic Classical Arabic.
+
+### Insight 3 — QuranMB.v2 (arXiv:2603.29087) Is the Active Tajweed Evaluation Benchmark
+The IQRA 2026 Interspeech Challenge released QuranMB.v2 — the expanded Quranic mispronunciation benchmark. Best system achieved +0.2787 F1 over baseline using generative large audio-language models. Sakina's tajweed detection pipeline must be evaluated against QuranMB.v2 to be credible to the research community and investable as a technical differentiator.
+
+### Insight 4 — Arabic.AI + HeyBreez Partnership (Apr 2026): Enterprise Arabic Voice Stack Now Production-Grade
+Arabic.AI (Tarjama, $15M raised) partnered with HeyBreez in April 2026 to bring production-grade Arabic voice AI to enterprises/governments. Their stack: 22-dialect STT, Arabic TTS, Arabic OCR, and agentic workflows — all Arabic-native. This is B2B-only with no Quran fine-tuning, but represents the most complete Arabic voice infrastructure available as a potential Sakina backend (evaluate vs. Munsit Edge and whisper-lora for cost/accuracy tradeoff).
+
+---
+
 ## 2026-06-20 Weekend Night (01:35 UTC)
 *Full report: [research/2026-06-20/weekend-night-0135.md](2026-06-20/weekend-night-0135.md)*
 
