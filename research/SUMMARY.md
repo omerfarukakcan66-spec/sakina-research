@@ -4,6 +4,23 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-20 Weekend Day (12:08 UTC) — Implementation Focus: Working Code TODAY (Round 3)
+*Full report: [research/2026-06-20/weekend-day-1208.md](2026-06-20/weekend-day-1208.md)*
+
+### Insight 1 — sherpa-onnx Arabic Model + Flutter streaming_asr = Offline Pipeline Ready NOW
+`k2-fsa/sherpa-onnx` v1.13.3 (13,100+ ⭐, released ~June 15 2026) ships `flutter-examples/streaming_asr/lib/streaming_asr.dart` — a complete Flutter mic-to-ASR pipeline. The model `sherpa-onnx-moonshine-base-ar-quantized-2026-02-27` (released Feb 27, 2026) is a quantized Arabic Moonshine Base (58M params, 5.63% WER) that drops directly into this example. **This is the offline Sakīna pipeline: `record` v7.1.0 → sherpa_onnx → Arabic Moonshine model.** No API, no cloud, fully on-device. Copy `streaming_asr.dart`, swap the model, done.
+
+### Insight 2 — Deepgram Nova-3 Gives $200 Free Credits (~750 hrs) — Best Cloud Starter
+Deepgram Nova-3 Arabic (`language=ar`) offers $200 in free credits (no credit card) — enough for ~750 hours of streaming Arabic transcription. Supports 17 dialect variants including `ar-SA` and `ar-EG`. 40% lower WER than competitors on conversational Arabic. Use as the cloud fallback during development before investing in on-device fine-tuning. Groq free tier (2,000 req/day) is simpler but Deepgram's credit depth is more useful for sustained testing.
+
+### Insight 3 — IqraEval 2025 (ArabicNLP) Published Phoneme-Level Tajweed MDD Models
+First open benchmark for Mispronunciation Detection & Diagnosis in Quranic recitation. Multiple teams published models including a Whisper-large-v3 adapted as a speech-to-phoneme model. `huggingface.co/spaces/IqraEval/SharedTask_ArabicNLP2025` — this is the phoneme-layer Sakīna needs on top of ASR to tell users which tajweed rule was violated, not just that something was wrong.
+
+### Insight 4 — yayaiu6 Repo Has Copy-Pasteable Verse Alignment Logic
+`yayaiu6/Real-Time-Quran-recitation-tracker-System` (121 ⭐) implements Levenshtein + Needleman-Wunsch alignment against `hafs_smart_v8` JSON for word-level Quran tracking. Python but directly portable to Dart. This is the verse-matching algorithm for Sakīna — pair it with the sherpa-onnx output stream and you have word-by-word live position tracking.
+
+---
+
 ## 2026-06-20 Weekend Day (09:04 UTC) — Implementation Focus: Working Code TODAY (Round 2)
 *Full report: [research/2026-06-20/weekend-day-0904.md](2026-06-20/weekend-day-0904.md)*
 
