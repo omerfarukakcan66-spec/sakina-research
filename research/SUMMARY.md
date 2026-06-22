@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (08:10 UTC) — arXiv:2507.13977 Deep Dive + TajweedAI + NeurIPS 2025 Full Sweep (Round 11)
+*Full report: [research/2026-06-22/daytime-0810.md](2026-06-22/daytime-0810.md)*
+
+### Insight 1 — nvidia/stt_ar_fastconformer_hybrid_large_pcd_v1.0: SOTA Classical Arabic + Diacritics, Tarteel's Actual 4% WER Backbone
+arXiv:2507.13977 (Jul 2025, IEEE) trained two FastConformer models on ~1,150h including **TarteelAI EveryAyah [390h]**. The `_pcd` variant (MSA + Classical Arabic + **diacritics**) is the model Tarteel runs via NVIDIA Riva to achieve their confirmed 4% WER on Quran — confirmed by NVIDIA case study. ~115M params. **Critical blocker for Flutter**: sherpa-onnx issue #790 (open since April 2024, still unresolved) confirms FastConformer → ONNX export fails at the decoder step (tokens.txt empty). FastConformer via sherpa-onnx is NOT a viable Flutter path. Keep on-device path = `KheemP/whisper-base-quran-lora` ONNX; use FastConformer server-side via NeMo for maximum accuracy.
+
+### Insight 2 — TajweedAI (NeurIPS 2025 Muslims in ML, GitHub: nmazid121/tajweedAI): CTC Forced Alignment Is the Tajweed Detection Architecture Template
+Hybrid system: `nvidia/stt-ar-fastconformer.hybrid-large.pcd-v1.0` → `ctc-forced-aligner` → binary Qalqalah classifier. Achieves 100% internal accuracy / 57.14% external accuracy on Qalqalah detection (overfitting on small dataset). This is the **first published system using CTC forced alignment for tajweed rule detection** — gives phoneme-level timestamps so you know exactly which millisecond a Qalqalah letter was pronounced and whether the echo was present. Architecture template for all Sakīna tajweed classifiers. Fix: retrain with 5× more data using `Buraaq/quran-md-ayahs` 77,429 word-level clips.
+
+---
+
 ## 2026-06-21 Weekend Day (18:03 UTC) — Implementation Focus: Working Code TODAY (Round 10)
 *Full report: [research/2026-06-21/weekend-day-1803.md](2026-06-21/weekend-day-1803.md)*
 
