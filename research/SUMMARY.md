@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (20:05 UTC) — sherpa-onnx v1.13.3 Nemotron Flutter CONFIRMED LIVE + EfficientNet-B0 Tajweed Vision + hetchyy Letter-Timestamps (Round 18)
+*Full report: [research/2026-06-22/daytime-2005.md](2026-06-22/daytime-2005.md)*
+
+### Insight 1 — sherpa-onnx v1.13.3 (June 15, 2026) + Nemotron-3.5 INT4 ONNX (0.67GB, 0.56s latency): Flutter Integration NOW LIVE — Benchmark Arabic WER Immediately
+`sherpa_onnx` Flutter package v1.13.3 (pub.dev, June 15, 2026) is the **first confirmed version with live Nemotron-3.5 multilingual streaming ASR support** (PR #3671 merged). Integration requires 6th encoder tensor `prompt_index` (int64): use **`101` for Arabic auto-detect** (exact Arabic locale integer not publicly documented). Pre-converted model: `onnx-community/nemotron-3.5-asr-streaming-0.6b-onnx-int4` (0.67GB, 8.20% WER English, 0.56s latency) — drop into existing `flutter-examples/streaming_asr/` with no ONNX export work. Independent validation: arXiv:2604.14493 (Apple/NVIDIA, April 2026) benchmarked 50+ ASR configs and named Nemotron Speech Streaming as **best on-device streaming architecture**. **Sakīna action (this week):** `flutter pub add sherpa_onnx:1.13.3`, configure NeMo transducer with `prompt_index=101`, test on 20 Quran clips from `Buraaq/quran-audio-text-dataset`. Publishing Arabic WER on Quran closes the last open gap for this model.
+
+### Insight 2 — hetchyy/quranic-universal-ayahs (174k rows, word+letter+waqf timestamps) + hetchyy/everyayah-phonemes: New Dataset from Quranic-Phonemizer Creator — Letter-Level Timing Fills Madd/Qalqalah Measurement Gap
+`hetchyy/quranic-universal-ayahs` (HuggingFace, same org as `Hetchy/quranic-phonemizer` NeurIPS 2025) provides **letter-level timestamps** per ayah across 174k rows — missing from every prior Quran dataset (Quran-MD and Tadabur have word-level only). Live Space: `hetchyy/quranic-universal-aligner`. Companion: `hetchyy/everyayah-phonemes` for pre-computed phoneme sequences. Letter timestamps enable direct Madd duration measurement, Qalqalah echo detection, and Ghunnah timing without running forced alignment — replacing the bottleneck step in TajweedAI (Round 11). **Sakīna action:** Load `hetchyy/quranic-universal-ayahs`, use letter timestamps as supervision signal for duration-based tajweed classifiers, pair with `hetchyy/everyayah-phonemes` for expected phonemes. **Also new (not production-ready):** arXiv:2503.23470 (March 2026) shows EfficientNet-B0 + SE block on mel-spectrograms achieves 95–99% accuracy on Al-Mad/Ghunnah/Ikhfaa using QDAT dataset (1,505 recordings) — vision-based tajweed classifier complementary to CTC approach, simpler to train.
+
+---
+
 ## 2026-06-22 Daytime (18:06 UTC) — Nemotron 3.5 ASR Streaming (June 4, 2026) + Qwen3-ForcedAligner Arabic Timestamps + whu-iasp Weights NOT Released (Round 17)
 *Full report: [research/2026-06-22/daytime-1806.md](2026-06-22/daytime-1806.md)*
 
