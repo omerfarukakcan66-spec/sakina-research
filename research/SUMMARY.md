@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (13:20 UTC) — Hifz AI App + Tarteel v5.78.0 Audio Fix + Quranly Live Teacher + Riwaya-ID (Round 14)
+*Full report: [research/2026-06-22/daytime-1320.md](2026-06-22/daytime-1320.md)*
+
+### Insight 1 — Tarteel "Hifz AI" (com.awa.hifz, ~Apr 2026): Second Standalone App, On-Device ASR Confirmed, Word-Level Correction, Tajweed STILL Absent
+Tarteel launched a second app **"Hifz AI: Tarteel Quran"** (Google Play `com.awa.hifz`, iOS id6748984824, ~April 2026, hifzai.app). Key confirmed specs: (a) **On-device ASR only** — "voice recordings stay on your device, never uploaded"; (b) Red/Green word-level error highlighting in real time; (c) "Self-Listening" feature: record yourself → compare against expert Qari; (d) Pricing: Free tier + Premium £7.50/month billed annually (≈$115/yr). Critically: **Tajweed correction still explicitly absent** — "currently does not provide detailed correction for Tajweed ... on our roadmap." This confirms Round 1–13 research: Tarteel (in both its products) has still not shipped phoneme/tajweed-level correction. QariAI and Sakīna remain the only paths to this feature. Sakīna's unique addition: real-time live teacher escalation when AI is uncertain — no competitor offers this.
+
+### Insight 2 — Tarteel main v5.78.0 (June 14, 2026): Android Inter-Ayah Pause FIXED, iOS Still Broken at v5.75.4 (Feb 28, 2026)
+Tarteel Android v5.78.0 (June 14, 2026) removed the inter-ayah audio pause that was a confirmed competitive advantage for Sakīna. **This advantage is now eliminated for Android users.** However, **iOS Tarteel is frozen at v5.75.4 (Feb 28, 2026) — the pause bug remains on iOS, roughly 40–50% of the market.** Sakīna using continuous HLS or WebRTC audio streaming has gapless playback on both platforms from Day 1. Target iOS users specifically in early marketing with "no gaps between verses, ever" messaging. Tarteel iOS lag (4+ months behind Android) signals a two-speed engineering team — watch for iOS-specific user churn.
+
+---
+
 ## 2026-06-22 Daytime (10:06 UTC) — AraS2P IqraEval #1 + wav2vec2-quran-phonetics + Quran-MD Paper + Tadabur Paper (Round 13)
 *Full report: [research/2026-06-22/daytime-1006.md](2026-06-22/daytime-1006.md)*
 
