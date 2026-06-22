@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Daytime (10:06 UTC) — AraS2P IqraEval #1 + wav2vec2-quran-phonetics + Quran-MD Paper + Tadabur Paper (Round 13)
+*Full report: [research/2026-06-22/daytime-1006.md](2026-06-22/daytime-1006.md)*
+
+### Insight 1 — AraS2P (arXiv:2509.23504, ArabicNLP 2025): #1 at IqraEval 2025 — Wav2Vec2-BERT Speech-to-Phonemes Is the Tajweed Detection Backbone
+`AraS2P` (ACL Anthology: 2025.arabicnlp-sharedtasks.65) ranked **#1 at IqraEval 2025** for phoneme-level mispronunciation detection in Quranic recitation. Architecture: Wav2Vec2-BERT with two-stage training — (1) task-adaptive continued pretraining on large-scale Arabic speech-phonemes datasets (MSA Phonetiser-generated labels), (2) fine-tune on IqraEval 2025 data + XTTS-v2 synthetic recitations with deliberate tajweed violations. The XTTS-v2 augmentation strategy (varied Ayah segments, speaker embeddings, textual perturbations to simulate human errors) is the specific technique to adopt when building Sakīna's phoneme error training set — it replaces the need for large annotated human-error corpora. **For the tajweed detection stack:** pair AraS2P weights (request from authors) with `Hetchy/quranic-phonemizer` for expected phonemes → diff → rule classification. Note: IqraEval 2025 winner (AraS2P) vs. IQRA 2026 winner (whu-iasp, F1=0.7201) — the 2026 system is more recent and likely stronger; both are CTC-based but whu-iasp adds TCN for phoneme context.
+
+### Insight 2 — TBOGamer22/wav2vec2-quran-phonetics (Dec 9, 2025): First Public wav2vec2 Trained for Quranic Phonetic Output — Test PER Immediately
+`TBOGamer22/wav2vec2-quran-phonetics` (HuggingFace, Dec 9, 2025) is the **first publicly released wav2vec2 model trained explicitly for Quranic phonetic transcription** — outputs phonetic (sound-level) representations, not Arabic text characters. Key design choice: **unfrozen feature extractor** allows acoustic adaptation to Quranic recitation. No published PER metric yet — test via HF Inference API using 20 word-level clips from `Buraaq/quran-audio-text-dataset` and measure PER vs. expected phonemes from `Hetchy/quranic-phonemizer`. If PER < 15%, this replaces the manual phonemizer → forced-alignment approach as Sakīna's phoneme extraction layer. Also confirmed: the Quran-MD dataset (`Buraaq/quran-audio-text-dataset`) now has a formal paper — **arXiv:2601.17880** (Jan 25, 2026) — 77,429 word-level + 187,080 verse-level clips, 32 reciters, 36.1 GB. These 77,429 isolated word clips are the ideal fine-tuning corpus for phoneme-level tajweed models.
+
+---
+
 ## 2026-06-22 Daytime (12:15 UTC) — IQRA 2026 Champion Architecture + Qwen3-ASR Quran Verdict + Meta OmniASR sherpa-onnx (Round 12)
 *Full report: [research/2026-06-22/daytime-1215.md](2026-06-22/daytime-1215.md)*
 
