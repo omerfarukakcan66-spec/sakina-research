@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-22 Night (22:32 UTC) — ICML 2026 Quran Paper (0.16% PER) + Quran-MD Word-Level Dataset + Tarteel v5.85.1 Sprint (Round 20)
+*Full report: [research/2026-06-22/night-2232.md](2026-06-22/night-2232.md)*
+
+### Insight 1 — ICML 2026 Paper Achieves 0.16% Phoneme Error Rate on Quran — Best Result Ever Published
+arXiv 2509.00094, presented at ICML 2026. Introduces: (1) **Quran Phonetic Script (QPS)** — 11-level encoding of Arabic phonemes + tajweed articulation characteristics (sifat); (2) **Multi-level CTC model** trained on QPS targets achieving 0.16% average PER on 286K annotated utterances from 848 hours of recitation; (3) Tasmeea algorithm for automated transcript verification; (4) `qdat_bench` — real mispronounced recitation benchmark covering Ghunnah, Qalqalah, Madd. If model weights are open, this is a drop-in tajweed error detection module that bypasses the need for a separate rule engine entirely — and outperforms everything Tarteel or QariAI currently ships.
+
+### Insight 2 — Quran-MD (Jan 2026) Provides Word-Level Temporal Alignment Across 32 Reciters
+arXiv 2601.17880. 77,429 word-level samples with per-word temporal audio alignment + Arabic/English/transliteration. 187,080 verse-level samples. On HuggingFace (Buraaq/quran-md-ayahs). This fills the critical gap that Tadabur (1,400h, 600 reciters, verse-level only) cannot fill: word-boundary timestamps needed for real-time "which word is the user on" verse tracking. **Sakina stack: Quran-MD for word-tracking model + Tadabur for ASR robustness.**
+
+### Insight 3 — Tarteel Hit v5.85.1 — 8 Minor Versions in ~2 Weeks Signals Active Feature Sprint
+v5.77.3 shipped June 7, 2026 (home screen widgets). v5.85.1 spotted on mod APK aggregator — changelog not yet public. 8 minor-version jumps in approximately 2 weeks indicates Tarteel is in a crunch sprint, consistent with the Mahraj/Makharij detection beta (Q2 target) landing in these releases. Sakina's live-teacher differentiation must ship before this ASR-only detection feature reaches general release (previously estimated Q4 2026 full rollout).
+
+---
+
 ## 2026-06-22 Night (21:32 UTC) — Tarteel Mahraj Q4 2026 Hard Deadline + MIT quranic-universal-library + Cross-Qira'at Whisper Pooling (Round 19)
 *Full report: [research/2026-06-22/night-2132.md](2026-06-22/night-2132.md)*
 
