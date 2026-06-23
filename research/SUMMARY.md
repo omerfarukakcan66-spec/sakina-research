@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-23 Daytime (16:06 UTC) — Flutter Live Session Stack Fully Mapped: livekit_client v2.8.1 + flutter_webrtc v1.5.2 (Round 29)
+*Full report: [research/2026-06-23/daytime-1606.md](2026-06-23/daytime-1606.md)*
+
+### Insight 1 — `livekit_client` v2.8.1 + `flutter_webrtc` v1.5.2 (Both June 20, 2026): The Complete $0 Teacher-Student Live Session Stack — 28-Round Blind Spot Resolved
+**The 28-round gap**: Sakina's primary moat — live teacher sessions — was never technically mapped across 28 prior research rounds. Now resolved: **`flutter_webrtc` v1.5.2** (MIT, 177k weekly downloads, June 20) provides the raw WebRTC layer with a critical June 12 audio upgrade: AVAudioEngine integration enables Apple **AEC/NS/AGC (echo cancellation, noise suppression, auto-gain control)** natively on iOS/macOS — teacher audio no longer bleeds into the student's Quran ASR mic. **v1.5.2 additionally exposes the Android audio device module** to embedders, enabling simultaneous WebRTC teacher-call audio AND a separate sherpa-onnx/Groq ASR capture stream on the same mic — both can run concurrently without interference. **`livekit_client` v2.8.1** (Apache 2.0, 89.6k weekly downloads, June 20) sits on top: open-source SFU routing, E2EE session API, AI Agent minutes support ($0.01/min for pre-session AI tutor). **LiveKit Cloud Build plan (free tier): 5,000 WebRTC min/month + 1,000 AI Agent min/month** = ~55 free 45-minute teacher-student sessions per month, sufficient for closed beta. Self-hosted: $0/min + ~$10–20/mo VPS. **Sakina beta live session cost = $0.** Implementation: `flutter pub add livekit_client flutter_webrtc`, connect to LiveKit free cloud, done. GitHub: `cloudwebrtc/flutter-webrtc`, `livekit/client-sdk-flutter`.
+
+### Insight 2 — `uzair0/quran-asr` "Full Tashkeel Vocab" Processor Confirmed — Still Training, Now Known to Output Diacritized Arabic
+New detail discovered: model processor is configured for **"full tashkeel vocab"** — it outputs fully diacritized Arabic (complete harakat), not bare consonants. At 6.31 GB (Whisper-large-v3 class), this would make it: (1) the largest Quran ASR model on HuggingFace by far; (2) the first large-scale model with diacritized output suitable for character-level tajweed diff. This output is **exactly what Sakina needs**: expected tashkeel text vs. recognized tashkeel text → char diff → flag wrong harakah → identify tajweed rule violated. Status unchanged: still actively training, no WER, no license confirmed. Monitor daily until commit activity stabilizes; benchmark within 24h of stability. HuggingFace direct access remains 403-blocked.
+
+---
+
 ## 2026-06-23 Daytime (14:11 UTC) — `uzair0/quran-asr` New Active Model + Tarteel Academy Disambiguation + record v7.1.0 Stable (Round 28)
 *Full report: [research/2026-06-23/daytime-1411.md](2026-06-23/daytime-1411.md)*
 
