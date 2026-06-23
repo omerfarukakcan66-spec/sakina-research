@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-23 Daytime (14:11 UTC) — `uzair0/quran-asr` New Active Model + Tarteel Academy Disambiguation + record v7.1.0 Stable (Round 28)
+*Full report: [research/2026-06-23/daytime-1411.md](2026-06-23/daytime-1411.md)*
+
+### Insight 1 — `uzair0/quran-asr` (HuggingFace, June 2026): 6.31GB Quran ASR Model Currently In Active Training — First Discovery in 28 Rounds
+`huggingface.co/uzair0/quran-asr` is a Quran-specific ASR model absent from all 27 prior rounds. Key specs: **6.31 GB** (Whisper-large-v3 class), 36 commits, **commits observed "6 days ago" AND "7 hours ago"** on June 23 — model is actively being trained right now. Optimizer: AdamW standard Whisper config. Dataset: unknown. WER: not published. License: unknown. At 6.31GB this is the largest Quran ASR model ever found on HuggingFace (vs. KheemP's ~150MB whisper-base). If trained on a large diverse corpus (Tadabur 1,400h + EveryAyah), could challenge the current 5.98% WER leader. **Action**: Monitor until training commits stabilize, then benchmark on `Buraaq/quran-audio-text-dataset` immediately. Verify license before any deployment consideration.
+
+### Insight 2 — Tarteel Academy (iOS `org.tarteelmcgp.app`) Is Muslim Center of Greater Princeton — NOT Tarteel Inc. + Sakina Live-Session Moat Remains Intact
+`id6759074212` surfaced in App Store search as "Tarteel Academy" but is confirmed to be the **Muslim Center of Greater Princeton (MCGP)**'s internal classroom management app — guided by Shaykh Ismael Essa, last updated March 22, 2026. Features: attendance tracking, teacher-parent communication, class recording. **This is NOT from Tarteel Inc. (the AI startup).** Tarteel Inc. remains iOS-frozen at v5.75.4 (Feb 28) and Android v5.78.2 (June 19) with zero teacher features or live session product. `record` Flutter package confirmed at v7.1.0 (June 11) — no new version in 12 days, stable. `FaisaI/tadabur-Whisper-Large` still listed "coming soon" 8 days after Small's June 15 release — watch for imminent launch.
+
+---
+
 ## 2026-06-23 Daytime (10:06 UTC) — Two Critical Corrections + obadx iOS Deployment + AL Siraat Active (Round 27)
 *Full report: [research/2026-06-23/daytime-1006.md](2026-06-23/daytime-1006.md)*
 
