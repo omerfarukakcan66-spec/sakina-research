@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-23 Daytime (10:06 UTC) — Two Critical Corrections + obadx iOS Deployment + AL Siraat Active (Round 27)
+*Full report: [research/2026-06-23/daytime-1006.md](2026-06-23/daytime-1006.md)*
+
+### Insight 1 — CORRECTION: Tarteel Makharij Q2/Q4 Timeline Is Unverified Third-Party Speculation — Official Tarteel Source Only Says "Roadmap, No Date" + QariAI Already Ships Makharij Today
+Tarteel's own Google Play description (verified June 2026): *"Currently, this feature does not include Tajweed or pronunciation correction, but we know there's community demand and it's on our roadmap for the future!"* — **no quarter, no date.** The "Q2 2026 beta / Q4 2026 full release" timeline from Rounds 19–26 originated from third-party blogs (yokersane.com, aichief.com) using language like "predictions suggest" — not any official Tarteel source. **Strategic revision:** Remove the Q4 2026 hard deadline from pitch materials. Replace with confirmed fact: tajweed is roadmap-only from Tarteel as of June 2026. Reframe competitive urgency around **QariAI (qariai.app, v1.1.6, Feb 2026)**, which already ships real-time phoneme-level Makharij correction on both stores — QariAI is the near-term benchmark, not a hypothetical future Tarteel feature. Tarteel confirmed still at v5.78.2 (June 19), no release June 20–23.
+
+### Insight 2 — CORRECTION: AL Siraat v1.2.1 (May 23, 2026) Is ACTIVELY Maintained — Prior "6-Month Stagnant" Claim Wrong + obadx iOS Deployment Confirmed (Apache 2.0)
+**AL Siraat correction:** Prior Round 24 stated AL Siraat had "6 months without update." False — confirmed 2026 updates: Feb 18 (AI accuracy + faster verse detection), Apr 3, May 23 (v1.2.1). It is actively maintained. The "accumulating churn" argument for Sakīna harvesting AL Siraat users is weakened; Sakīna's moat against AL Siraat must rest on **live teacher sessions** (structural), not engineering stagnation (not true). **obadx iOS deployment:** `github.com/iTarek/Quran-Muaalem-iOS` is a live iOS reference implementation of `obadx/muaalem-model-v3_2` (0.16% PER, Apache 2.0, ICML 2026) + `obadx/recitation-segmenter-v2` on a FastAPI/Modal backend. Clone immediately — the full open-source Quran pronunciation pipeline (waqf segmentation → QPS CTC phoneme scoring → tajweed diff) is production-ready on iOS. **tadabur-Whisper-Medium/Large confirmed NOT released** (absent from GitHub model table, zero HuggingFace results) — the "coming soon" language was inferred from the paper's multi-size table, not an explicit announcement.
+
+---
+
 ## 2026-06-23 Daytime (08:08 UTC) — FaisaI/tadabur-Whisper-Small Exact Model Card + WER Reality Check + Tarteel Status (Round 26)
 *Full report: [research/2026-06-23/daytime-0808.md](2026-06-23/daytime-0808.md)*
 
