@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-23 Daytime (20:04 UTC) — ICML 2026 Training Dataset Live TODAY + uzair0/quran-asr Apache 2.0 Confirmed (Round 30)
+*Full report: [research/2026-06-23/daytime-2004.md](2026-06-23/daytime-2004.md)*
+
+### Insight 1 — `obadx/muaalem-annotated-compressed-v3` (MIT, June 23, 2026, ~3h ago): ICML 2026 848h/286K-Utterance Training Dataset Now Publicly Downloadable — Full 0.16% PER Pipeline Open-Source
+`huggingface.co/datasets/obadx/muaalem-annotated-compressed-v3` published TODAY (June 23, 2026) — the compressed training dataset behind the ICML 2026 paper achieving **0.16% Phoneme Error Rate** on Quran recitation. **MIT license.** Specs: 100h–1,000h size tier (consistent with paper's 848h / 286K utterances); tags: quran, tajweed, arabic, pronunciation-error-detection, speech-segmentation. With this dataset now live, the complete ICML 2026 pipeline is fully accessible and MIT/Apache-2.0 licensed end-to-end: compressed training data (`muaalem-annotated-compressed-v3`, MIT) + model weights (`obadx/muaalem-model-v3_2`, Apache 2.0, 660M params) + iOS deployment reference (`iTarek/Quran-Muaalem-iOS`, Apache 2.0) + segmentation preprocessing (`obadx/recitation-segmenter-v2`, Apache 2.0). No licensing barriers, no "coming soon" gates. **Sakina action:** Download and audit dataset structure immediately (segment-level audio + QPS phoneme annotations). Fine-tune `muaalem-model-v3_2` on any Sakina-specific learner error patterns. The compressed format enables download on a standard cloud instance without HPC. This is the foundation for Sakina's tajweed feedback engine — buildable today, not theoretical.
+
+### Insight 2 — `uzair0/quran-asr` Apache 2.0 CONFIRMED (6.31GB, Still Training): Commercial-Viable Largest Quran ASR Model If Training Succeeds
+**New this round:** `uzair0/quran-asr` license is confirmed **Apache 2.0** — previously unknown across Rounds 28–29. Training status: last checkpoint ~7h before this run; "step 2000 from 3 days ago" logged — mid-to-late training. Model outputs fully diacritized Arabic (full tashkeel vocab, confirmed Round 29). At 6.31GB this is Whisper-large-v3 class — the largest Quran ASR model ever found on HuggingFace. Apache 2.0 means: no NC restrictions (unlike tadabur-Whisper-Small's CC BY-NC 4.0), production-deployable without contacting the author, fine-tunable and redistributable. **Monitor trigger:** When commit frequency drops from daily → weekly, benchmark within 24h on `Buraaq/quran-audio-text-dataset`. If WER < 7% → adopt as Sakina's primary ASR. If 7–10% → ensemble with tadabur-Whisper-Small. Also confirmed stable this round: `record` package still v7.1.0 (no new version, 12 days stable); `FaisaI/tadabur-Whisper-Large` still "coming soon"; Tarteel still at v5.78.2 (no v5.79+, 4-day gap, hotfix sprint paused).
+
+---
+
 ## 2026-06-23 Daytime (16:06 UTC) — Flutter Live Session Stack Fully Mapped: livekit_client v2.8.1 + flutter_webrtc v1.5.2 (Round 29)
 *Full report: [research/2026-06-23/daytime-1606.md](2026-06-23/daytime-1606.md)*
 
