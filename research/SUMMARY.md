@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-23 Daytime (08:08 UTC) — FaisaI/tadabur-Whisper-Small Exact Model Card + WER Reality Check + Tarteel Status (Round 26)
+*Full report: [research/2026-06-23/daytime-0808.md](2026-06-23/daytime-0808.md)*
+
+### Insight 1 — `FaisaI/tadabur-Whisper-Small` Confirmed: 8.7% WER, 6.5% CER, Updated June 15 — Broader Style Coverage Trumps KheemP's 5.98% WER for a Live Teacher App
+HuggingFace model: `FaisaI/tadabur-Whisper-Small` (author: Faisal Alherran, paper arXiv:2604.18932, updated ~June 15, 2026). **WER: 8.7%, CER: 6.5%** on Tadabur held-out test (600+ reciters, murattal + mujawwad styles). Coming soon: `FaisaI/tadabur-Whisper-Medium` and `FaisaI/tadabur-Whisper-Large`. License: CC BY-NC 4.0 — commercial deployment requires negotiation with Faisal Alherran. **Critical comparison:** KheemP (5.98% WER) was tested on EveryAyah hafs-murattal only; Tadabur-Whisper-Small (8.7%) tested on 600 reciters including mujawwad — these are different axes, not a simple loss. The SILMA coverage improvement (+14pp: 96.63% vs 82.57%) and mujawwad style coverage are Tadabur's true advantages. **Sakina dual-model action:** DeiT V3 Qira'at classifier (5ms) → if hafs murattal → KheemP; else → Tadabur-Whisper-Small. When Tadabur-Whisper-Medium/Large ship, benchmark immediately — a fine-tuned 769M model on 1400h diverse data may dominate on both axes.
+
+### Insight 2 — Tarteel Stalled at v5.78.2 (June 19, 2026): No New Release in 4 Days, No Makharij Announcement — Q3 Sakina Ship Window Still Open
+Confirmed latest stable Android: **v5.78.2 (June 19, 2026)**. Four-release hotfix sprint (June 7–19) has paused. No v5.79+ found on any source. No public Mahraj/Makharij beta announcement. Q2 beta may be internal-only. Tarteel iOS remains 4+ months behind Android. **The Q3 2026 Sakina ship window for live sessions + phoneme feedback remains fully open** — Tarteel Q4 full Mahraj release is still the hard deadline.
+
+---
+
 ## 2026-06-23 Night (04:36 UTC) — Groq Arabic TTS Live + Tadabur Whisper Models + Islamic LLMs Survey (Round 25)
 *Full report: [research/2026-06-23/night-0436.md](2026-06-23/night-0436.md)*
 
