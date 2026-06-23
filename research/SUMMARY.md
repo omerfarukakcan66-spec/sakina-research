@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-23 Night (00:32 UTC) — Tilawa.ai NeMo Competitor Found + Qara'a 2M-User Hybrid Model + Tarteel v5.78.1 Paywall Tightened (Round 22)
+*Full report: [research/2026-06-23/night-0032.md](2026-06-23/night-0032.md)*
+
+### Insight 1 — Tilawa.ai (April 2026): Fully-Shipped NeMo Conformer + AI Tutor App — Not in Any Prior Round, Now the Primary Benchmark Competitor
+`ai.tilawa.app` (iOS `id6760923881`, tilawa.ai) shipped ~April 2026 on both stores and was **completely absent from Rounds 1–21**. Architecture: NVIDIA NeMo Conformer fine-tuned on 830+ hours / 36+ reciters + on-device model (~20MB, <8% WER offline). UX: word-by-word real-time auto-scroll + makharij/madd/ghunnah/ikhfa/idgham/qalqalah correction + **AI Quran tutor chatbot** (chooseable teaching style, chat about mistakes/practice plans) + spaced-repetition memorization mode + gamification (hassanat, XP, levels). **What Tilawa does NOT have:** live human teacher sessions — Sakina's moat is intact. **Sakina action:** Test Tilawa immediately to understand what "AI tutor" satisfies vs. what only a live human can do. Re-sharpen positioning to: "for real-time AI feedback, Tilawa/QariAI exist — for a real human teacher who knows you, Sakina." Also surfaced: **Qurani.ai QRC API** — subscription-gated B2B real-time recitation correction API (`StartTilawaSession` streaming) — evaluate as Sakina ASR infrastructure alternative to self-hosting.
+
+### Insight 2 — Qara'a (alquran.ai): Sakina's Hybrid AI+Teacher Model Already at 2M Users — Async (24h) vs. Sakina's Synchronous Live Sessions Is the Differentiator
+`qara.qurantutor.ai` / `com.bismillah.amaljariyah` — real-time AI pronunciation correction + **async certified Ustadz/Ustadzah instructor feedback within 24 hours**. 2M+ users, expanding from Indonesia to Malaysia, 4.8 stars both stores, 475,573 voice-sample training database. This is Sakina's exact positioning thesis already deployed at scale. Key differentiation: Qara'a is **async** (24-hour turnaround), targets **beginner/SEA Malay-speaking users**; Sakina is **synchronous live sessions**, targeting **MENA/Gulf Arabic + diaspora learners**. The hybrid model is validated at 2M users. Sakina must ship live-session capability before Qara'a adds real-time sessions. Also confirmed: **Tilawah** (tilawahapp.com) and **Tilawi.ai** (tilawi.ai) are a third and fourth distinct "tilawa"-branded app — market naming crowding signals rapid new entrant volume.
+
+### Insight 3 — Tarteel v5.78.1 (June 17, 2026): Paywall Tightened (Recording Playback Removed from Free), Notification Bug Still Active, Tajweed Still Absent
+Corrected from Round 21: current stable is **v5.78.1** (June 17, 2026), not v5.77.3. Two new findings from June 2026 reviews: (1) **Recording playback removed from free tier** — users cannot hear their own recent recordings without Premium, a UX regression increasing churn pressure; (2) **Notification bug confirmed still active** — custom reminder notifications still failing for multiple users (same bug from Round 22). Tajweed absent from both Tarteel and Hifz AI — Q4 2026 deadline unchanged. Growth: 15M total downloads, 11K new downloads/day. Academic validation this round: two 2026 peer-reviewed papers (ScienceDirect + Frontiers in Education) confirm "AI cannot replace teachers" and "traditional teaching remains indispensable" — directly cite in pitch materials for Sakina's human-escalation positioning. Also from this round: **arXiv:2508.19587** shows isolated Arabic letter recognition achieves only 35% with SOTA wav2vec2 (65% with lightweight NN on embeddings + PGD adversarial training) — use this architecture as the Makharij quality scoring layer on top of whu-iasp TCN+CTC.
+
+---
+
 ## 2026-06-22 Night (23:31 UTC) — Fanar 2.0 Aura-STT-LF + CATT-Whisper Diacritized ASR Win + Tarteel v5.85.1 Downgraded to Unverified (Round 21)
 *Full report: [research/2026-06-22/night-2331.md](2026-06-22/night-2331.md)*
 
