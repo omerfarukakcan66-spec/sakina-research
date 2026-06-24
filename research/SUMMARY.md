@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-24 Daytime (17:08 UTC) — `CohereLabs/cohere-transcribe-03-2026` (Apache 2.0, #1 HF ASR Leaderboard, 11.2% Quran WER OOTB): Best Conformer Fine-Tuning Target for On-Device Quranic ASR — 37-Round Blind Spot Closed (Round 38)
+*Full report: [research/2026-06-24/daytime-1708.md](2026-06-24/daytime-1708.md)*
+
+### Insight 1 — `CohereLabs/cohere-transcribe-03-2026` (March 26, 2026, Apache 2.0): 2B Conformer, #1 Open ASR Leaderboard (5.42% avg WER), **11.2% Quran WER OOTB** — Best General-Purpose Arabic ASR, Best Conformer Fine-Tuning Target — Never Covered in 37 Prior Rounds
+`huggingface.co/CohereLabs/cohere-transcribe-03-2026` (Cohere Labs, March 26, 2026, Apache 2.0). 2B-parameter **Conformer encoder + Transformer decoder, trained from scratch** (NOT a Whisper variant). **#1 on HuggingFace Open ASR Leaderboard** at 5.42% average WER across 8 benchmarks — beats Whisper Large v3 (7.44%), ElevenLabs Scribe v2 (5.83%), Qwen3-ASR (5.76%). Speed: **524x real-time factor = 3x faster than Whisper**. Supports Arabic (14 languages). **Quranic Arabic WER: 11.2% on Tadabur benchmark** (OOTB, no Quran fine-tune) — best general-purpose model on that benchmark, though behind domain-fine-tuned variants (tadabur-Whisper-Small 8.7%, KheemP 5.98%). Tadabur paper quote: *"domain adaptation outweighs model size in Qur'anic ASR."* Key ONNX exports already available: `onnx-community/cohere-transcribe-03-2026-ONNX` (FP32), `vigneshlabs/cohere-transcribe-03-2026-int8-onnx` (INT8, CPU-runnable), `cstr/cohere-transcribe-03-2026-GGUF`. sherpa-onnx Issue #3442 (Mar 30): Cohere Transcribe support requested + JS API merged (PR #3458) — **NOT yet in Flutter package v1.13.3; monitor for v1.14.x**. Free API at `docs.cohere.com/v2/docs/transcribe` ($0 cost). **Sakina actions: (1) Fine-tune on `obadx/muaalem-annotated-compressed-v3` (MIT, 848h) → Apache 2.0 Conformer + MIT data = first open Quranic Conformer, likely <6% WER, ONNX-native on-device; (2) Add Cohere API as $0 Arabic ASR fallback alongside Groq Whisper; (3) Monitor sherpa-onnx v1.14.x for Flutter integration of Cohere Transcribe ONNX.** Conformer architecture advantage over Whisper for live recitation: local self-attention = better streaming latency vs Whisper's non-causal attention.
+
+### Insight 2 — `Sadique5/arabic_quranic_asr` (HuggingFace): New Dataset — Every Ayah + 10K Unique Quran Words for Beginner Recitation ASR Training — Not in Prior Rounds
+`huggingface.co/datasets/Sadique5/arabic_quranic_asr` — Quranic ASR dataset with recitations of every ayah plus 10,000 unique Quranic words, explicitly designed for beginner Quran recitation ASR training. Upload date/license/hours unconfirmed (check model card). Potential use: supplementary vocabulary-coverage data (10K unique words = complete Quranic lexicon at word level) for fine-tuning pipeline.
+
+### Monitors — Tarteel Still v5.78.2 (Day 5+ Stall), `uzair0/quran-asr` Still Training — No Trigger Events
+Tarteel: confirmed v5.78.2 (June 19) across all tracker sources; no v5.79+ found; no Makharij announcement. `uzair0/quran-asr`: still shows active checkpoints, no completion signal, no WER published.
+
+---
+
 ## 2026-06-24 Daytime (12:05 UTC) — arXiv:2511.18774 (Nov 2025): 22.3% Relative WER Reduction via Whisper Decoder Prompting With Known Verse Text — Free Zero-Shot Upgrade Missed Across 37 Rounds (Round 37)
 *Full report: [research/2026-06-24/daytime-1205.md](2026-06-24/daytime-1205.md)*
 
