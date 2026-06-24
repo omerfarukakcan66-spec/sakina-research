@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-24 Daytime (10:05 UTC) — EfficientNet-B0 Achieves 95-99% Accuracy on Tajweed Rules (QDAT, 2025) + "Fundamental Flaw" in ASR-Based Quran Evaluation Confirmed in Literature Review (Round 36)
+*Full report: [research/2026-06-24/daytime-1005.md](2026-06-24/daytime-1005.md)*
+
+### Insight 1 — arXiv:2503.23470 (March 2025): EfficientNet-B0 + Squeeze-and-Excitation on Mel-Spectrograms Achieves **95.35% (Madd), 99.34% (Ghunnah), 97.01% (Ikhfaa)** on Public QDAT Dataset — Highest Per-Rule Tajweed Accuracy in 36 Rounds
+`arxiv.org/abs/2503.23470` (Shaiakhmetov et al., March 30, 2025). EfficientNet-B0 + SE attention on normalized mel-spectrograms classifies 3 tajweed rules (Al-Madd / Ghunnah / Ikhfaa) at 95–99% accuracy using the **public QDAT dataset (1,500+ audio recordings)**. Architecture is extremely lightweight (<6MB, CPU-feasible on mobile). This is the **implementable reference for Sakina's rule-classifier layer** (P1 step 5 complement): download QDAT → train EfficientNet-B0-SE → extend to Qalqalah/Idgham/Iqlab using `obadx/muaalem-annotated-compressed-v3` (MIT). Pipeline: `mel-spectrogram chunk → EfficientNet-B0-SE → per-rule flag → if Madd/Ghunnah/Ikhfaa flagged AND muaalem scorer disagrees → escalate`. **Not in any prior round (1-35).** Learning curves confirmed no overfitting. **Sakina action:** Reproduce paper on QDAT; wire EfficientNet-B0-SE in parallel to muaalem-v3_2 scorer; use high-confidence rule flags (>95%) for immediate auto-feedback, low-confidence for teacher queue.
+
+### Insight 2 — arXiv:2510.12858 (Oct 2025): 20-Year Review Says ASR-Based Quran Evaluation Has a "Fundamental Flaw" + Demographic Bias Against Non-Native/Women/Children — Fourth Peer-Reviewed Paper for Sakina's Pitch
+`arxiv.org/abs/2510.12858` (Al-Kharusi et al., October 2025). 20-year literature review of digital Quran evaluation tools concludes: ASR systems have a **"fundamental flaw"** — they emphasize word identification over qualitative acoustic evaluation (Makhraj-level); suffer from **biased training data** (adult male Arab reciters) and **demographic disparities** (fail on children/women/non-native); "unable to deliver meaningful feedback for improvement." **This is the fourth independent peer-reviewed paper confirming AI cannot replace Quran teachers** (with Frontiers 2026, Social Sciences 2026, arXiv:2508.19587). The demographic bias finding is new: all major competitors (Tarteel, AL Siraat, QariAI) are tested on homogeneous male reciter data. Sakina's live teacher model is demographically agnostic by design. **Pitch addition:** *"A 2025 review of 20 years of AI Quran tools identifies 'fundamental flaws' including demographic bias — Sakina's live teacher adapts to every voice."* Also: arXiv:2506.07722 (El Kheir et al., Interspeech 2025, 15 authors incl. Ahmed Ali QCRI) now fully confirmed as the **QuranMB.v1 paper** — the original benchmark that became QuranMB.v2 in IQRA 2026. El Kheir's HuggingFace: `huggingface.co/01Yassine` — check for QuranMB.v1 download. Also found: `HamzaSidhu786/wav2vec2-base-word-by-word-quran-asr` (7.9% WER, word-by-word granularity, license unknown) as a possible single-word re-evaluation scorer.
+
+### Monitors — Tarteel Still v5.78.2 (~5-Day Stall Confirmed), uzair0/quran-asr Still Training, tadabur-Whisper-Large Still "Coming Soon" (Day 9)
+All three remain unresolved. No trigger events.
+
+---
+
 ## 2026-06-24 Daytime (08:04 UTC) — `TBOGamer22/wav2vec2-quran-phonetics` (Dec 2025): First Public Phoneme-Output Quran ASR + Syllable-Level Quran ASR Found — 35-Round Blind Spots (Round 35)
 *Full report: [research/2026-06-24/daytime-0804.md](2026-06-24/daytime-0804.md)*
 
