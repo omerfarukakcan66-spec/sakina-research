@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-24 Daytime (08:04 UTC) — `TBOGamer22/wav2vec2-quran-phonetics` (Dec 2025): First Public Phoneme-Output Quran ASR + Syllable-Level Quran ASR Found — 35-Round Blind Spots (Round 35)
+*Full report: [research/2026-06-24/daytime-0804.md](2026-06-24/daytime-0804.md)*
+
+### Insight 1 — `TBOGamer22/wav2vec2-quran-phonetics` (Dec 2025, HuggingFace): First Public Wav2Vec2 Model With Phoneme-Only Output for Quran — License & PER Unknown, Spot-Check Immediately
+`huggingface.co/TBOGamer22/wav2vec2-quran-phonetics` (December 2025). Fine-tuned wav2vec2-CTC claiming to be **"the first publicly released wav2vec2 model trained explicitly for Quranic phonetic transcription."** Key distinction from `obadx/muaalem-v3_2` (primary scorer): muaalem outputs **QPS (custom 11-level Quran Phonetic Script)** while TBOGamer22 outputs **standard phonemic representation** — potentially IPA-compatible and directly feedable into the `panphon` weighted articulatory edit-distance scorer already in Sakina's pipeline, skipping the QPS→IPA conversion step. Feature extractor is **not frozen** — allowing acoustic adaptation to Quranic prosody (Madd, Qalqalah, Ghunnah). Training data: private word-level Quranic audio. License: **unknown** (check before any deployment). PER: **not published**. No arXiv paper found. **Sakina action:** Visit model card directly; check license + phoneme inventory; run 5–10 Quran clips from `Buraaq/quran-audio-text-dataset`; if IPA-compatible + permissive license → use as cross-check scorer alongside muaalem-v3_2 (disagreement between the two = escalate to human teacher).
+
+### Insight 2 — `IbrahimSalah/Wav2vecLarge_quran_syllables_recognition` (HuggingFace): Syllable-Level Quran ASR + 5-gram LM — Direct Madd/Qalqalah/Ghunnah Duration Scorer
+`huggingface.co/IbrahimSalah/Wav2vecLarge_quran_syllables_recognition`. wav2vec2-large + 5-gram LM outputting **syllable-level transcription** (e.g., `مِنَ الْجِنَّةِ وَالنَّاسِ` → `مِ نَلْ جِنْ نَ تِ وَنْ نَاْسْ`). Trained on private data + Tarteel/EveryAyah (cleaned). License: unknown. **Why it matters:** Tajweed duration rules (Madd Tabii=2 beats, Madd Munfasil=4, Madd Lazim=6, Ghunnah=2, Qalqalah post-sukoon) operate at the syllable boundary — a syllable-boundary model gives **direct duration measurement** without the workaround of letter-level timestamps from `hetchyy/quranic-universal-ayahs`. Could replace the forced-alignment step for duration-based rule detection. **Sakina action:** Check license; run syllable-boundary timing test on 3–5 Madd-containing ayat; if boundaries are clean → use as duration scorer complement.
+
+### Monitoring — Tarteel Still at v5.78.2 (5+ Day Stall), uzair0/quran-asr Training Unconfirmed Complete, tadabur-Whisper-Large Still Unreleased
+No Tarteel v5.79+ found (June 24). `uzair0/quran-asr` (Apache-2.0, 6.31GB) still showing recent checkpoint saves but no confirmed training completion. `FaisaI/tadabur-Whisper-Large` still listed "coming soon." All three remain active monitoring targets.
+
+---
+
 ## 2026-06-24 Tuesday Deep-Dive (07:29 UTC) — IQRA 2026 Concluded: SOTA Mispronunciation-Judgment Ceiling ≈72% F1 / ~30% Baseline Precision + Harf-Speech Clinical Scorer Blueprint + OmniASR Apache Backbone (Round 34, Opus)
 *Full report: [research/2026-06-24/OPUS-deep-analysis.md](2026-06-24/OPUS-deep-analysis.md)*
 
