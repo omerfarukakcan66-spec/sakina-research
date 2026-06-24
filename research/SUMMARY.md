@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-24 Daytime (12:05 UTC) — arXiv:2511.18774 (Nov 2025): 22.3% Relative WER Reduction via Whisper Decoder Prompting With Known Verse Text — Free Zero-Shot Upgrade Missed Across 37 Rounds (Round 37)
+*Full report: [research/2026-06-24/daytime-1205.md](2026-06-24/daytime-1205.md)*
+
+### Insight 1 — arXiv:2511.18774 (Nov 24, 2025): Feed Expected Quran Verse Text as Whisper `initial_prompt` → **~22% Relative WER Reduction, Zero-Shot, No Fine-Tuning** — 37-Round Blind Spot
+`arxiv.org/abs/2511.18774` (Talafha, Abu Alhassan, Abdul-Mageed, Nov 2025). "Zero-Shot Context-Aware ASR for Diverse Arabic Varieties." Injecting a first-pass hypothesis (or known target text) as Whisper's decoder prompt yields **22.3% relative WER reduction on MSA Arabic, 20.54% on accented MSA** — tested across 10 Arabic conditions, zero-shot (no retraining). For Sakina this is uniquely powerful: the student always selects their verse *before* reciting → the exact mushaf text (from QUL, MIT) is available as the prompt. `whisper.transcribe(audio, initial_prompt="<expected verse text>")`. Estimated improvement: KheemP 5.98% WER → ~4.6%; tadabur-Whisper-Small 8.7% WER → ~6.8%. Two-stage variant: on-device sherpa-onnx Nemotron (fast) first pass → its output as `initial_prompt` for cloud Groq Whisper second pass. For CTC models (sherpa): proxy-guided n-best re-ranking by edit distance to expected verse (no decoder access needed). `initial_prompt` supported in `openai-whisper`, `faster-whisper`, and Groq Whisper endpoint. **Sakina action (P0):** Add `initial_prompt = selected_verse_text` to all Whisper API calls immediately — this is a one-parameter change delivering 20%+ WER reduction for free.
+
+### Insight 2 — `RetaSy/quranic_audio_dataset` (LREC 2024): 7,000 Non-Native Quran Recordings From 1,287 Learners Across 11+ Countries — The Right Evaluation Benchmark for Sakina's Diaspora Users
+`huggingface.co/datasets/RetaSy/quranic_audio_dataset`. 7,000 Quranic recitations from **non-native speakers** across 11+ countries — Turkish, Indonesian, Urdu, etc. (Sakina's exact diaspora demographic). Six annotation categories; crowd accuracy 0.77; expert-algorithm agreement 0.89. This is the only public dataset of learner-grade Quran audio from non-native speakers. All prior Sakina ASR models (obadx 0.16% PER, KheemP 5.98% WER) are benchmarked on expert reciters (EveryAyah) — RetaSy exposes real-learner degradation. **Sakina action:** Benchmark context-aware Whisper + muaalem-v3_2 pipeline on RetaSy to confirm accuracy holds on beginner audio before shipping.
+
+### Monitors — Tarteel at v5.78.2 (~6-Day Stall, Hotfix Sprint Ended), uzair0/quran-asr Still Training, tadabur-Whisper-Large Still "Coming Soon" (Day 9+)
+All three remain unresolved. No trigger events.
+
+---
+
 ## 2026-06-24 Daytime (10:05 UTC) — EfficientNet-B0 Achieves 95-99% Accuracy on Tajweed Rules (QDAT, 2025) + "Fundamental Flaw" in ASR-Based Quran Evaluation Confirmed in Literature Review (Round 36)
 *Full report: [research/2026-06-24/daytime-1005.md](2026-06-24/daytime-1005.md)*
 
