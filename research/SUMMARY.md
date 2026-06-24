@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-24 Daytime (18:03 UTC) — `MaddoggProduction/whisper-l-v3-turbo-quran-lora-dataset-mix` (Apache 2.0, 12.69% WER, Curriculum 3-Dataset Learning): First Whisper-Large-v3-Turbo Quran Fine-Tune + Tarteel 6-Day Stall Confirmed (Round 39)
+*Full report: [research/2026-06-24/daytime-1803.md](2026-06-24/daytime-1803.md)*
+
+### Insight 1 — `MaddoggProduction/whisper-l-v3-turbo-quran-lora-dataset-mix` (Apache 2.0): Whisper-Large-v3-Turbo LoRA for Quran, 12.69% WER, 3-Stage Curriculum Learning — Not in Any Prior Round
+`huggingface.co/MaddoggProduction/whisper-l-v3-turbo-quran-lora-dataset-mix` — LoRA fine-tune of **`openai/whisper-large-v3-turbo`** (4 decoder layers, ~3-4× faster than whisper-large-v3) for Quranic Arabic with diacritics. **License: Apache 2.0 ✓.** WER: **12.69%** on `ahishamm/QURANICWhisperDataset` (20% held-out). Higher WER than KheemP (5.98%) and tadabur-Whisper-Small (8.7%) but: (a) benchmarked on a *different, unknown* test set — cross-benchmark WERs not directly comparable; (b) whisper-large-v3-turbo is dramatically faster on-device (4 vs 32 decoder layers) and already served by Groq. Training used **3-stage curriculum learning**: Stage 1 = `tarteel-ai/everyayah` (clean professional reciters), Stage 2 = `MohamedRashad/Quran-Recitations` (20 reciters, diacritized, Apr 2026), Stage 3 = `ahishamm/QURANICWhisperDataset`. Data augmentation: gain adjustments, spectral masking, white noise. Two new datasets surface: **`MohamedRashad/Quran-Recitations`** (20 reciters, AlQuran Cloud API source, diacritized ayah-audio pairs, April 2026 update — not in prior rounds) and **`ahishamm/QURANICWhisperDataset`** (license/size/composition unknown — check before use). **Sakina actions: (1) Benchmark MaddoggProduction on `Buraaq/quran-audio-text-dataset` for fair comparison vs. KheemP 5.98%; (2) Check `ahishamm/QURANICWhisperDataset` license; (3) Reproduce the curriculum recipe with `obadx/muaalem-annotated-compressed-v3` (848h, MIT) as Stage 2 + `RetaSy/quranic_audio_dataset` (non-native learner audio) as Stage 3 → first Quran ASR model explicitly trained on learner audio, Apache 2.0.**
+
+### Insight 2 — Tarteel 6-Day Stall Confirmed (v5.78.2 June 19 → No v5.79+ as of June 24); `uzair0/quran-asr` Still Training; `tadabur-Whisper-Large/Medium` Still Unreleased
+All three monitors remain unresolved. **Tarteel at v5.78.2 (June 19) for 6 days** — longest release gap since the June 7 sprint; no Makharij announcement. The 6-day gap may signal a larger feature release is being prepared. `uzair0/quran-asr` (Apache 2.0, 6.31GB): active model saves still occurring today ("7 hours ago") — training in progress, completion trigger NOT met. `FaisaI/tadabur-Whisper-Large` and `-Medium`: still "coming soon" 9+ days after Small's release.
+
+---
+
 ## 2026-06-24 Daytime (17:08 UTC) — `CohereLabs/cohere-transcribe-03-2026` (Apache 2.0, #1 HF ASR Leaderboard, 11.2% Quran WER OOTB): Best Conformer Fine-Tuning Target for On-Device Quranic ASR — 37-Round Blind Spot Closed (Round 38)
 *Full report: [research/2026-06-24/daytime-1708.md](2026-06-24/daytime-1708.md)*
 
