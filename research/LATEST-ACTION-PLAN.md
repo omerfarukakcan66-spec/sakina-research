@@ -1,5 +1,5 @@
 # Sakina — Latest Action Plan
-**Last updated:** 2026-06-24 01:41 UTC (Round 31, Opus deep-analysis)
+**Last updated:** 2026-06-24 06:48 UTC (Round 32, Opus deep-analysis)
 **Status:** 🟢 BREAKTHROUGH — every layer of the core pipeline now has a confirmed 2025–2026 open/MIT/Apache reference implementation. The two biggest unknowns (live follow-along + Arabic phonetic matching) are now buildable from MIT-licensed code.
 
 ---
@@ -30,7 +30,7 @@
 
 ## P1 — This Sprint
 4. Benchmark `uzair0/quran-asr` (Apache-2.0, ~6.3GB) and `FaisaI/tadabur` Whisper fine-tunes once training stabilizes; convert the winner via `whisper_ggml_plus` HF→ggml path for on-device.
-5. Build mispronunciation scorer: `camel-tools` normalize → recited phonemes (AraS2P-style) → weighted Needleman-Wunsch with `panphon` + El-Kheir-2025 confusion-matrix substitution costs.
+5. Build mispronunciation scorer — **reproduce a ranked recipe, don't design from scratch.** Reimplement **Hafs2Vec** (IqraEval-2025 #2): wav2vec2/AraS2P fine-tuned on **EveryAyah/QUL (94h, 54k clips) + IqraEval train (79h, 74k clips)** with **`quranic-phonemizer` Tajweed-aware labels** (IqraEval phoneme set). Then add the **#1 lever — synthetic mispronunciation augmentation** (BAIC/Mattar 2025: perturb phonemes per El-Kheir-2025 confusion pairs). Optionally fuse the ASR transcript as a 2nd modality (arXiv 2511.17477, UniSpeech+BERT → PER 3.83%/F1 70.53%) since Sakina already produces it. Score via weighted Needleman-Wunsch with `panphon` + El-Kheir confusion-matrix substitution costs; normalize ASR text with `camel-tools`.
 6. Add Groq Orpheus Arabic TTS (Aisha) for spoken error feedback.
 
 ## P2 — Pre-Launch

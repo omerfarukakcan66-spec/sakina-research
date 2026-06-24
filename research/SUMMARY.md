@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-24 Morning (06:48 UTC) — Stack Re-Verified Stable + Two Ranked Phoneme-Assessment Recipes for the Mispronunciation Scorer (Round 32)
+*Full report: [research/2026-06-24/OPUS-continued-0648.md](2026-06-24/OPUS-continued-0648.md)*
+
+### Insight 1 — Hafs2Vec (IqraEval 2025, #2) Gives Sakina a Reproducible Recipe for the Mispronunciation-Scorer Layer
+The mispronunciation scorer (P1 step 5) no longer needs to be designed from scratch. **Hafs2Vec** (ArabicNLP 2025, aclanthology 2025.arabicnlp-sharedtasks.62) ranked **#2** in the IqraEval 2025 Qur'anic pronunciation-assessment shared task with a fully documented recipe: **wav2vec2-based** phoneme assessment trained on **EveryAyah/QUL (94h, 28 reciters, verses <10s → 54k clips) + IqraEval train (79h, 74k clips)**, with **Tajweed-aware labels from a custom Quranic phonemizer aligned to the IqraEval phoneme set** (same family as `quranic-phonemizer`). The IqraEval **#1** system — **BAIC / Mattar et al. 2025** — beat it primarily by adding **synthetic mispronunciation data**, signaling that at the current frontier the differentiator is data augmentation, not architecture. **Sakina action:** reimplement Hafs2Vec (wav2vec2/AraS2P + EveryAyah+IqraEval + quranic-phonemizer labels) and invest in synthetic mispronunciation generation (perturb phonemes per El-Kheir-2025 confusion pairs) — converts step 5 from "research" to "reproduce two ranked systems." ANPLers (sharedtasks.64) offers a Whisper-large alternative on the same substrate.
+
+### Insight 2 — Multimodal (Acoustic+Text) Fusion Beats Acoustic-Only for Arabic MDD; Sakina Gets the 2nd Modality Free
+arXiv **2511.17477** (Nov 2025, "Enhancing Quranic Learning: A Multimodal DL Approach for Arabic Phoneme Recognition") fuses **UniSpeech acoustic embeddings + BERT text embeddings from Whisper transcriptions** (early/intermediate/late fusion) → **PER 3.83%, MDD F1 70.53%, AF detection-error 2.6%**. Since Sakina's pipeline already produces an ASR transcript, that text can be fed as a second modality essentially for free to lift mispronunciation-detection accuracy. (Research artifact; no pip package, but architecture is reproducible.)
+
+### Insight 3 — Q1–Q4 Re-Verified Stable, No Regressions (June 2026)
+`sherpa_onnx` still **1.13.3** (latest on pub.dev; no 1.14.x); `record` + `acceptWaveform`/`isReady`/`decode`/`getResult` loop confirmed as the concrete byte-stream→on-device-ASR glue (Flutter cookbook documents the exact PCM16/16kHz/mono path). Tarteel **still has no public API** (live June-2026 support article; "Developer Resources" collection exists but is gated and discloses no SDK/endpoint — `AliOsamaHassan/tarteel-api` is old DeepSpeech-era, not the production stack). `yayaiu6` remains the only live word-level tracker and its README now explicitly credits "Tarteel AI's research," reconfirming there is no algorithmic secret sauce. No newer package versions to chase; the action-plan pipeline is current.
+
+---
+
 ## 2026-06-24 Night (01:41 UTC) — BREAKTHROUGH: Open-Source Live Quran Follow-Along Engine + quranic-phonemizer v2.7 Fuzzy Matching + Tarteel Stack Fully Mapped (Round 31)
 *Full report: [research/2026-06-24/OPUS-continued-0141.md](2026-06-24/OPUS-continued-0141.md)*
 
