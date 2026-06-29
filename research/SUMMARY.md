@@ -4,6 +4,17 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-29 Daytime (20:05 UTC) — `audio_io` v0.3.0 (Flutter, 1.5ms Realtime Buffer, Cross-Platform): 45-Round Blind Spot for Sakina's Audio Capture Layer + Tarteel Stall Day 20+ (Round 46)
+*Full report: [research/2026-06-29/daytime-2005.md](2026-06-29/daytime-2005.md)*
+
+### Insight 1 — `audio_io` v0.3.0 (pub.dev, Flutter): 1.5ms Realtime Capture Buffer, Configurable Latency Modes, All Platforms — 45-Round Blind Spot for Sakina's Audio Layer
+`pub.dev/packages/audio_io` — Flutter plugin for real-time cross-platform audio streaming with three configurable latency modes: **Realtime (~1.5ms)**, Balanced (~3ms), Powersave (~6ms). Format: Float64/48kHz/mono (uniform across iOS, Android, macOS, Web, Linux, Windows — eliminates per-platform PCM negotiation). Stream-based API: `AudioIo.instance.startRealtime()` → `Stream<Float64List>`. Current version: **v0.3.0**. **Why it matters for Sakina:** The current pipeline uses `record` 7.1.0 (general-purpose recorder, no latency mode control, OS-chosen buffer). `audio_io` was explicitly designed for real-time audio processing — at 1.5ms Realtime mode, audio arrives in Flutter before the next 250ms sherpa-onnx ASR chunk window opens, giving the freshest possible signal. **Caveats (must verify before shipping):** (1) Format conversion required: Float64/48kHz → PCM16/16kHz for sherpa-onnx acceptWaveform() — adds ~0.05ms per frame; (2) iOS AVAudioSession conflict with flutter_webrtc not yet tested — the documented Round 31 failure mode; (3) v0.3.0 = pre-stable, check GitHub for iOS crash reports; (4) License not confirmed. **Sakina actions: (P1) Benchmark audio_io vs. record on real iOS 17/18 + Android 14 devices — measure mic-to-acceptWaveform() round-trip latency; (P1) Test AudioIo.Realtime + flutter_webrtc simultaneously on iPhone 15 for AVAudioSession conflict; (P2) Implement Float64/48kHz → PCM16/16kHz Dart converter using dart:typed_data Int16List.**
+
+### Insight 2 — Tarteel Stall Day 20+: Longest Release Gap in 46 Rounds — Ship Window Maximally Open; All 4 Monitors Unchanged
+**Tarteel v5.78.2** (last confirmed release ~June 19, 2026) — no v5.79+ found on APKMirror, APKPure, Aptoide, or Uptodown as of June 29. **Stall total: ~20 days**, the longest in 46 rounds of monitoring. Makharij feature still NOT launched (competitor analysis: QariAI blog April 2026 confirms Tarteel has no makharij guidance; no Tarteel blog announcement since). **All other monitors unchanged:** `uzair0/quran-asr` still training (at step ~2000 as of June 26, no WER published); `tadabur-Whisper-Large/Medium` still "Coming Soon" (15+ day stall since Small released); `sherpa-onnx` still v1.13.3 (June 15, 2026); no v1.14.x. No new Quranic/Arabic ASR paper found June 26-29. **P0 actions still open from Round 45:** test undiacritized Whisper `initial_prompt`; monitor `huggingface.co/NabilMH` for arXiv:2606.19747 model release; benchmark Mega-ASR on `RetaSy/quranic_audio_dataset`.
+
+---
+
 ## 2026-06-25 Daytime (08:06 UTC) — arXiv:2606.19747 (GTAF + Queen Mary University, June 18 2026): **Arabic WITHOUT Diacritics Beats Tashkeel for Quranic ASR** + Mega-ASR (Apache 2.0): Qwen3-ASR + Robustness LoRA for Noisy Learner Audio — Tarteel Stall Day 11+ (Round 45)
 *Full report: [research/2026-06-25/daytime-0806.md](2026-06-25/daytime-0806.md)*
 
