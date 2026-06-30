@@ -4,6 +4,20 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-30 Night (00:36 UTC) — Quranic Phonemizer (NeurIPS 2025) + TajweedAI Hybrid Classifier + Tarteel Tajweed Still Not Shipped
+*Full report: [research/2026-06-30/night-0036.md](2026-06-30/night-0036.md)*
+
+### Insight 1 — Quranic Phonemizer (NeurIPS 2025): Open-Source G2P Tool with 71 Tajweed-Aware Phonemes — THE Missing Piece for Sakina's Tajweed Pipeline
+`github.com/Hetchy/Quranic-Phonemizer` — Python API for Hafs 'an 'Asim, 71-symbol phoneme inventory encoding all Tajweed rules (Idgham, Iqlab, Ikhfa, Qalqalah, Tafkheem, Waqf). Transformer trained on its labels: **3.9% PER on IqraEval, 84.9% accuracy on QuranMB**. Web demo at quranicphonemizer.com. **Why it matters for Sakina:** This is the G2P substrate the Tajweed correction pipeline was missing. Full pipeline now buildable: (1) ASR → text, (2) Quranic-Phonemizer → expected phoneme sequence for that ayah, (3) forced alignment on audio, (4) diff expected vs. detected → per-rule error flags. NeurIPS 2025 Muslims in ML Workshop, OpenReview: https://openreview.net/pdf?id=hZt0JK28iV. **P0: Clone the repo this week and test on 10 ayahs.**
+
+### Insight 2 — TajweedAI (NeurIPS 2025): Hybrid ASR-Classifier Architecture — 100% Qalqalah Accuracy, Open Source on GitHub
+`github.com/nmazid121/tajweedAI` + NeurIPS 2025 paper (OpenReview AauWmDPOIf). **First published system: ASR temporal alignment + binary classifier per Tajweed rule.** Case study: Qalqalah (plosive echo on ق ط ب ج د), **100% test accuracy** on targeted training. The insight: you do NOT need one giant model for all Tajweed — a stack of small binary classifiers (one per rule) on top of ASR alignment is both practical and accurate. Sakina can prototype a Qalqalah classifier this sprint and ship it as a beta Tajweed feature **before Tarteel ships anything**. Architecture blueprint is in the open-source repo.
+
+### Insight 3 — Tarteel v5.77.3 (June 7, 2026): Bug Fixes Only — Tajweed Phonetics STILL "Future Roadmap" After 20+ Research Rounds
+Latest Tarteel release (v5.77.3, June 7, 2026) contains only bug fixes + Eid message. Confirmed from Tarteel's own support docs: **"Tarteel does not provide detailed correction for Tajweed (phonetic rules of pronunciation and intonation)."** Word-level detection only (missed/wrong/extra words). Tajweed correction is explicitly a future goal. Despite aggressive GCC App Store ranking campaigns, Tarteel has NOT closed this gap. QariAI has phoneme-level Tajweed but no live sessions. Sakina's Tajweed + live teacher combination remains **uncontested as of June 30, 2026**.
+
+---
+
 ## 2026-06-29 Daytime (20:05 UTC) — `audio_io` v0.3.0 (Flutter, 1.5ms Realtime Buffer, Cross-Platform): 45-Round Blind Spot for Sakina's Audio Capture Layer + Tarteel Stall Day 20+ (Round 46)
 *Full report: [research/2026-06-29/daytime-2005.md](2026-06-29/daytime-2005.md)*
 
