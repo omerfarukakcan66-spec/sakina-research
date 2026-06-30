@@ -4,6 +4,19 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-30 Daytime (08:08 UTC) — `MuazAhmad7/Surah_Ikhlas-Labeled_Dataset` (CC-BY-4.0, Dec 2025): First Public Labeled Qalqalah Error Dataset, 1,506 WAV + `sobolev210/quran-recitation-errors` + Tarteel Stall Day ~22 (Round 50)
+*Full report: [research/2026-06-30/daytime-0808.md](2026-06-30/daytime-0808.md)*
+
+### Insight 1 — `MuazAhmad7/Surah_Ikhlas-Labeled_Dataset` (Dec 9, 2025, HuggingFace, CC-BY-4.0): First Public Binary-Labeled Qalqalah Error Dataset — 1,506 WAV Files — 49-Round Blind Spot
+`huggingface.co/datasets/MuazAhmad7/Surah_Ikhlas-Labeled_Dataset`. License: **CC-BY-4.0 ✓** (commercial). 1,506 WAV audio files of Surah Al-Ikhlas recitations with binary Tajweed labels: `T` (correct) / `F` (error). File naming: `ID{participant}V{verse}{T/F}.wav` — systematic participant × verse × correctness structure. Explicit **Qalqalah error classification** (the bouncing echo on قلقلة letters, canonical example: final د in verse 1 of Surah Al-Ikhlas). No affiliated paper found — independent HuggingFace upload, Dec 9, 2025. **Why it matters for Sakina:** This is the missing piece that closes the Qalqalah classifier gap. TajweedAI (NeurIPS 2025, Round 47) has the architecture achieving 100% Qalqalah accuracy, but was trained on private data. `MuazAhmad7` is the first public CC-BY-4.0 labeled Qalqalah dataset. Full pipeline now buildable with all open components: (1) `audio_io`/`record` → (2) `Qwen3-ForcedAligner-0.6B` → (3) EfficientNet-B0-SE binary classifier trained on MuazAhmad7 + QDAT → (4) flag Qalqalah absent → teacher/AI feedback. Surah Al-Ikhlas is one of the first 5 surahs every beginner learns — high learner traffic, ideal Beta rollout surface. **Limitations:** 1,506 samples may need augmentation; 4-verse scope only (generalization needs testing). **Sakina actions: (P0) Download dataset, combine with QDAT, train EfficientNet-B0-SE binary Qalqalah classifier, target >95% accuracy; (P0) Ship as first live Tajweed auto-feedback feature in Beta; (P1) Extend to other Qalqalah positions using `Buraaq/quran-md-ayahs` word-level audio auto-extraction.**
+
+### Insight 2 — `sobolev210/quran-recitation-errors` + `quran-recitation-errors-test` (HuggingFace): Train/Test Split Quran Recitation Error Dataset With Live Viewer — Not in 49 Prior Rounds
+`huggingface.co/datasets/sobolev210/quran-recitation-errors/viewer` (train) + `huggingface.co/datasets/sobolev210/quran-recitation-errors-test` (held-out test). Two-part train/test dataset for Quran recitation error classification. HuggingFace viewer live (column-based, browsable). `metadata.jsonl` with labels. Structure: audio chunks + metadata labels. **License unknown** — check model card before use. Error taxonomy unknown — if per-rule Tajweed labels, combine with MuazAhmad7 for multi-rule classifier training. **Sakina actions: (P1) Visit viewer to identify column schema / error label types; (P1) If license permissive + rule-level labels → add to Tajweed classifier training pipeline.**
+
+**Monitors (Round 50):** Tarteel **v5.78.2 (Day ~22 stall)** — longest in 50 rounds; no v5.79+; only confirmed change in recent release: "removes pauses between ayahs when listening to reciter audio" (minor UX). Third-party source speculates Tarteel Makharij beta Q4 2026 — treat as rumor (no official confirmation). `uzair0/quran-asr` still training (no WER). `tadabur-Whisper-Large/Medium` still "Coming Soon". `sherpa-onnx` v1.13.3 stable. `livekit_client` v2.8.1 stable.
+
+---
+
 ## 2026-06-30 Daytime (06:06 UTC) — `microsoft/VibeVoice-ASR` (MIT, 7B, 60-min, Arabic+, Jan 2026): 48-Round Blind Spot + `iTarek/Quran-Muaalem-iOS` Production Modal+Swift Reference + obadx = ICML 2026 (Round 49)
 *Full report: [research/2026-06-30/daytime-0606.md](2026-06-30/daytime-0606.md)*
 
