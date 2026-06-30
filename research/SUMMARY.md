@@ -4,6 +4,22 @@ Cumulative top insights across all research runs, newest first.
 
 ---
 
+## 2026-06-30 Night (05:33 UTC) — Qwen3-ASR Native Transformers (June 26) + Voxtral TTS Arabic Voice Cloning + Qwen3.5-Omni-Light 113-Language ASR — All Three 47-Round Blind Spots (Round 48)
+*Full report: [research/2026-06-30/night-0533.md](2026-06-30/night-0533.md)*
+
+### Insight 1 — `Qwen/Qwen3-ASR-1.7B` Now Natively Supported by HuggingFace Transformers (June 26, 2026): Standard Fine-Tuning Pipeline Unlocked — Prior Custom Package Barrier Gone
+`huggingface.co/Qwen/Qwen3-ASR-1.7B` updated June 26, 2026 to add **native HuggingFace Transformers support** including `torch.compile` for faster inference. Previously, the custom `qwen-asr` pip package was required (non-standard training loop). Now `transformers.pipeline('automatic-speech-recognition', model='Qwen/Qwen3-ASR-1.7B')` works directly, and **standard HuggingFace Trainer applies** for fine-tuning. **What this unlocks for Sakina today:** (1) Fine-tune on `obadx/muaalem-annotated-compressed-v3` (MIT, 848h) using Trainer + LoRA (PEFT) — no custom scripts needed; target <8% WER on Tadabur benchmark; (2) Export ONNX via `optimum-cli` (now works for Transformers-native models) → path to on-device Flutter deployment; (3) Deploy via vLLM (already supports Transformers-native ASR). **License: Apache 2.0 ✓.** The biggest friction point for fine-tuning Sakina's primary ASR candidate is now removed. **P0: Start fine-tuning run on muaalem-v3 this week.**
+
+### Insight 2 — `mistralai/Voxtral-4B-TTS-2603` (March 26, 2026, Arabic + Voice Cloning From 3s Reference, $0.016/1K Chars): 47-Round TTS Blind Spot — Cheaper Than Groq Orpheus + Voice Clone Differentiator
+`huggingface.co/mistralai/Voxtral-4B-TTS-2603` (arXiv:2602.11298 TTS extension, March 26, 2026). Completes the Voxtral speech stack (ASR covered Round 44; TTS missed until now). **Supports Arabic ✓**. Key differentiator vs. Groq Orpheus (Round 25): **voice cloning from 3s reference audio** — model captures voice, accent, inflection, intonation from a short recording. API price: **$0.016/1K chars** (vs. Groq Orpheus ~$0.04/1K chars equivalent — 2.5× cheaper). Weights: CC BY-NC 4.0 (non-commercial self-host); commercial via Mistral API. **Why voice cloning is the Sakina killer feature for tajweed UX:** Record a certified sheikh's 3-second clip → all AI correction feedback is voiced in that sheikh's voice (with permission). "AI feedback in [chosen sheikh's] voice" — no competitor ships this. Applicable to both (1) AI pre-session warmup corrections and (2) post-session error replay. **Sakina actions: (P1) Test Arabic TTS quality vs. Groq Orpheus Aisha; (P1) Prototype voice-cloning UX with a 3s sheikh sample; (P2) Verify commercial API terms.**
+
+### Insight 3 — `Qwen/Qwen3.5-Omni-Light` (March 30, 2026, Open-Weight HuggingFace, 113-Language ASR): Best Non-Native Arabic Learner ASR Candidate — 47-Round Blind Spot
+`huggingface.co/collections/Qwen/qwen35` | arXiv:2604.15804. Qwen3.5-Omni-Light is the open-weight variant of Alibaba's omnimodal model (full 30B model is proprietary API-only). Supports **ASR in 113 languages/dialects** (vs. Qwen3-ASR-1.7B's 52), including Arabic. **Why 113 languages matters for Sakina:** Learners are diaspora Muslims (Turkish, Indonesian, Urdu, Bengali, Somali, Swahili, French-African backgrounds). These accented-Arabic speakers degrade ASR accuracy on models trained on fewer languages. Qwen3.5-Omni-Light's 113-language training = more cross-linguistic accent variation = better handling of non-native Arabic. Predecessor Qwen3-Omni was Apache 2.0 — verify Qwen3.5-Omni-Light license on model card. No Quranic WER published yet. **Sakina actions: (P1) Confirm license on HuggingFace model card; benchmark on `RetaSy/quranic_audio_dataset` (7K non-native learner recordings — 11+ countries); if >10% relative WER improvement vs. Qwen3-ASR-1.7B on RetaSy → adopt for diaspora learner sessions. (P2) Check streaming support for live session use.**
+
+**Monitors (Round 48):** Tarteel **v5.78.2 (Day 11+ stall)** — longest in 48 rounds; no v5.79+. `uzair0/quran-asr` still training (no WER). `tadabur-Whisper-Large/Medium` still "Coming Soon" (15+ day stall). `sherpa-onnx` v1.13.3 stable. `livekit_client` v2.8.1 stable.
+
+---
+
 ## 2026-06-30 Night (00:36 UTC) — Quranic Phonemizer (NeurIPS 2025) + TajweedAI Hybrid Classifier + Tarteel Tajweed Still Not Shipped
 *Full report: [research/2026-06-30/night-0036.md](2026-06-30/night-0036.md)*
 
